@@ -1575,6 +1575,11 @@ leaflet-css@^0.1.0:
   resolved "https://registry.yarnpkg.com/leaflet-css/-/leaflet-css-0.1.0.tgz#c1d07652092897b6321fa5caf634a15472ef152d"
   integrity sha512-KWbt3jNLkEBYl7S/rcj5CAUgHeVVvniHgv2qmkpRrQnyLy3cV1FkY3c68cbKXuYvQMR4J8NQxiPHrRmKq6t+dA==
 
+leaflet@^1.9.4:
+  version "1.9.4"
+  resolved "https://registry.yarnpkg.com/leaflet/-/leaflet-1.9.4.tgz#23fae724e282fa25745aff82ca4d394748db7d8d"
+  integrity sha512-nxS1ynzJOmOlHp+iL3FyWqK89GtNL8U8rvlMOsQdTTssxZwCXh8N2NB3GDQOL+YR3XnWyZAxwQixURb+FA74PA==
+
 levn@^0.4.1:
   version "0.4.1"
   resolved "https://registry.yarnpkg.com/levn/-/levn-0.4.1.tgz#ae4562c007473b932a6200d403268dd2fffc6ade"
