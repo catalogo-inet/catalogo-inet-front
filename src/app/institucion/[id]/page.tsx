@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/accordion";
 import { Map } from "@/components/Map";
 
-const Detail = () => {
+const Detail = ({ params }: { params: { id: number } }) => {
   const [showMap, setShowMap] = useState(false);
 
   const handleToggle = () => {
@@ -21,6 +21,7 @@ const Detail = () => {
   return (
     <div className="flex items-center space-x-2 ">
       <h1>Escuela</h1>
+      <h2>{params.id}</h2>
       <h2>Carreras disponibles</h2>
       <Accordion type="single" collapsible className="w-full">
         <AccordionItem value="item-1">
