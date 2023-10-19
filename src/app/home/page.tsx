@@ -4,8 +4,8 @@ import { useState } from "react";
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Map } from "@/components/Map";
-import { SvgFiltros } from "../assets/icons/SvgIcons";
 import { ListOfFormations } from "@/components/ListOfFormations";
+import { FilterSheet } from "@/components/FilterSheet";
 
 const Home = () => {
   const [showMap, setShowMap] = useState(false);
@@ -28,15 +28,10 @@ const Home = () => {
               <Switch id="activar-mapa" onClick={handleToggle} />
             </div>
             <Label htmlFor="activar-mapa" className="text-black text-sm">
-              {showMap ? "Desactivar mapa" : "Activar mapa"}
+              Mapa
             </Label>
           </div>
-          <button className="flex py-1 px-2 shadow-md bg-white gap-2 rounded-[5px] overflow-hidden">
-            <SvgFiltros />
-            <Label htmlFor="activar-mapa" className="text-black text-sm">
-              Filtros
-            </Label>
-          </button>
+          <FilterSheet />
         </div>
       </section>
 
