@@ -4,9 +4,11 @@
 
 :root {
   --color-white: #fafafa;
+  --color-blue: #0e68af;
   --foreground-rgb: 255, 255, 255;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+  --border-radius: 5px;
 }
 
 @media (prefers-color-scheme: dark) {
