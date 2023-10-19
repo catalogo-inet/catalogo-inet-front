@@ -21,27 +21,18 @@ export function Map() {
   useEffect(() => {}, [center]);
 
   return (
-    <>
-      <div className="flex">
-        <h2>cambiar cordenadas a las de buenos aires</h2>
-        <button
-          onClick={() => setCenter([-34.61178, -58.41731])}
-          className="px-5 py-1 bg-slate-950 text-white rounded-sm"
-        >
-          click
-        </button>
-      </div>
+    <div className="w-full z-10">
       <MapContainer
         key={center.join(",")}
         center={center}
         zoom={13}
-        style={{ height: "300px", width: "600px" }}
+        style={{ height: "300px", width: "100%" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
         <Marker position={center} icon={customIcon}>
           <Popup>AQUÍ PUEDES COLOCAR TU CONTENIDO DE MARCADOR</Popup>
         </Marker>
       </MapContainer>
-    </>
+    </div>
   );
 }
