@@ -1,4 +1,7 @@
+"use client";
+
 import { CardFormation } from "./CardFormation";
+import { useEffect } from "react";
 
 const list = [
   {
