@@ -24,9 +24,7 @@ export const FilterSheet = () => {
       <SheetTrigger asChild>
         <button className="flex py-1 px-2 shadow-md bg-white gap-2 rounded-[5px] overflow-hidden">
           <SvgFiltros />
-          <Label htmlFor="activar-mapa" className="text-black text-sm">
-            Filtros
-          </Label>
+          <Label className="text-black text-sm">Filtros</Label>
         </button>
       </SheetTrigger>
       <SheetContent className="bg-white shadow-md text-black z-50">
