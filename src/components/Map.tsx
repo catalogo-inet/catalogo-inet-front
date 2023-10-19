@@ -9,9 +9,7 @@ import "leaflet/dist/leaflet.css";
   // import "../components/ApiFetch"
 
 export function Map() {
-  const [center, setCenter] = useState<LatLngExpression>([
-    -37.32167, -59.13316,
-  ]);
+  const [center, setCenter] = useState<LatLngExpression>([-34.6118, -58.4173]);
 
   const customIcon = L.icon({
     iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149060.png",
@@ -52,17 +50,17 @@ export function Map() {
   }
 
   return (
-    <>
+    <div className="w-full h-screen z-10">
       <MapContainer
-        style={{ height: "90vh", width: "80vw" }}
+        style={{ height: "100vh", width: "100%" }}
         key={center.join(",")}
         center={center}
-        // maxBounds={limites}
         minZoom={4}
         maxZoom={18}
         zoom={4}
         zoomControl={false}
         attributionControl={false}
+        
       >
 
         {/* Capa base OSM (Contiene las atribuciones)*/}
@@ -147,9 +145,10 @@ export function Map() {
         <Marker position={center} icon={customIcon}>
           <Popup>AQUÍ PUEDES COLOCAR TU CONTENIDO DE MARCADOR</Popup>
         </Marker>
+        <ZoomControl position="bottomleft" />
 
         <Eventos />
       </MapContainer>
-    </>
+    </div>
   );
 }
