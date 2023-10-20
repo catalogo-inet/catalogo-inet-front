@@ -63,7 +63,7 @@ export function Map() {
   }
 
   return (
-    <div className="w-full h-screen z-10">
+    <div className="w-full h-screen z-0">
       <MapContainer
         style={{ height: "100vh", width: "100%" }}
         key={center.join(",")}
@@ -155,7 +155,6 @@ export function Map() {
         <Marker position={center} icon={customIcon}>
           <Popup>AQUÍ PUEDES COLOCAR TU CONTENIDO DE MARCADOR</Popup>
         </Marker>
-        <ZoomControl position="bottomleft" />
 
         <Eventos />
       </MapContainer>

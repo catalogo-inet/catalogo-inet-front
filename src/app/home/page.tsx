@@ -49,7 +49,7 @@ const Home = () => {
         </div>
       </section>
 
-      <div className="z-10">{showMap ? <Map /> : <ListOfFormations />}</div>
+      <div className="z-0">{showMap ? <Map /> : <ListOfFormations />}</div>
     </main>
   );
 };

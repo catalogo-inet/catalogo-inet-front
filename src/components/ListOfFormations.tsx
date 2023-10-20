@@ -43,7 +43,7 @@ export function ListOfFormations() {
       <h1 className="text-black text-2xl font-semibold pl-5 mt-10">
         Formacion profesional
       </h1>
-      <div className="flex flex-col p-5 gap-7 sm:grid sm:grid-cols-2">
+      <div className="flex flex-col p-5 gap-7 sm:grid sm:grid-cols-2 mx-auto">
         {list.map((formation, i) => {
           const { city, name, location, province, email, phone } = formation;
           return (
