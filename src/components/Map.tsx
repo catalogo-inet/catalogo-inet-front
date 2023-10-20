@@ -70,12 +70,12 @@ function Localize(){
 
 
   return (
-      <>
+      <div className="w-full h-screen z-10">
       {/* <button onClick={Lokeame()}>click</button> */}
       <Capas />
 
       <MapContainer
-        style={{ height: "90vh", width: "80vw" }}
+        style={{ height: "100vh", width: "100%" }}
         key={center.join(",")}
         center={center}
         maxBounds={limites_externos}
@@ -84,6 +84,7 @@ function Localize(){
         zoom={4}
         zoomControl={false}
         attributionControl={false}
+        
       >
 
       <Localize />
@@ -106,12 +107,13 @@ function Localize(){
         <Marker position={center} icon={customIcon}>
           <Popup>AQUÍ PUEDES COLOCAR TU CONTENIDO DE MARCADOR</Popup>
         </Marker>
+        <ZoomControl position="bottomleft" />
 
         
 
         <Eventos />
       </MapContainer>
-      </>
+      </div>
 
   );
 }
