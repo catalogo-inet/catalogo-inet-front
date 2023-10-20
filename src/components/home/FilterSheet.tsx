@@ -14,7 +14,7 @@ import {
   Label,
   Switch,
 } from "@/components/ui";
-import { SvgFiltros } from "../../src/assets/icons/SvgIcons";
+import { SvgFiltros } from "../../assets/icons/SvgIcons";
 
 export const FilterSheet = () => {
   return (

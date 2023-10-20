@@ -39,11 +39,11 @@ const list = [
 
 export function ListOfFormations() {
   return (
-    <>
-      <h1 className="text-black text-2xl font-semibold pl-5 mt-10">
+    <div>
+      <h1 className="text-black text-2xl font-semibold mt-10">
         Formacion profesional
       </h1>
-      <div className="flex flex-col p-5 gap-7 sm:grid sm:grid-cols-2 mx-auto">
+      <div className="flex flex-col gap-7 sm:grid sm:grid-cols-2 sm:justify-between mt-10">
         {list.map((formation, i) => {
           const { city, name, location, province, email, phone } = formation;
           return (
@@ -59,6 +59,6 @@ export function ListOfFormations() {
           );
         })}
       </div>
-    </>
+    </div>
   );
 }

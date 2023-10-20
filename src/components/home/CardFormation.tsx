@@ -16,7 +16,7 @@ export function CardFormation({
   email,
 }: FormationProps) {
   return (
-    <div className="text-black rounded-xl overflow-hidden flex flex-col shadow-md bg-gray-200 max-w-md">
+    <div className="text-black rounded-xl overflow-hidden flex flex-col shadow-md bg-gray-200 ">
       <header className="bg-[var(--color-blue)] p-5">
         <h2 className="text-white text-xl">
           {city} - {name}
