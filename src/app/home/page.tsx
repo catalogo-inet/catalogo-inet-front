@@ -6,6 +6,7 @@ import { Switch } from "@/components/ui/switch";
 import { Map } from "@/components/Map";
 import { ListOfFormations } from "@/components/ListOfFormations";
 import { FilterSheet } from "@/components/FilterSheet";
+import Popup from "@/components/Popup";
 
 const Home = () => {
   const [showMap, setShowMap] = useState(false);
