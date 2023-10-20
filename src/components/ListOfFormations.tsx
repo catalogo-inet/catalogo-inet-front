@@ -1,7 +1,6 @@
 "use client";
 
 import { CardFormation } from "./CardFormation";
-import { useEffect } from "react";
 
 const list = [
   {
@@ -40,24 +39,26 @@ const list = [
 
 export function ListOfFormations() {
   return (
-    <div className="flex flex-col p-5 gap-7 ">
-      <h1 className="text-black text-2xl font-semibold">
+    <>
+      <h1 className="text-black text-2xl font-semibold pl-5 mt-10">
         Formacion profesional
       </h1>
-      {list.map((formation, i) => {
-        const { city, name, location, province, email, phone } = formation;
-        return (
-          <CardFormation
-            key={i}
-            city={city}
-            name={name}
-            location={location}
-            province={province}
-            email={email}
-            phone={phone}
-          />
-        );
-      })}
-    </div>
+      <div className="flex flex-col p-5 gap-7 sm:grid sm:grid-cols-2">
+        {list.map((formation, i) => {
+          const { city, name, location, province, email, phone } = formation;
+          return (
+            <CardFormation
+              key={i}
+              city={city}
+              name={name}
+              location={location}
+              province={province}
+              email={email}
+              phone={phone}
+            />
+          );
+        })}
+      </div>
+    </>
   );
 }

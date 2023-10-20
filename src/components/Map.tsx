@@ -1,12 +1,26 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MapContainer, TileLayer, Marker, Popup, ZoomControl, ScaleControl, AttributionControl, LayerGroup, LayersControl, Circle, useMapEvents, useMap, useMapEvent } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  ZoomControl,
+  ScaleControl,
+  AttributionControl,
+  LayerGroup,
+  LayersControl,
+  Circle,
+  useMapEvents,
+  useMap,
+  useMapEvent,
+} from "react-leaflet";
 import { LatLngExpression } from "leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 
-  // import "../components/ApiFetch"
+// import "../components/ApiFetch"
 
 export function Map() {
   const [center, setCenter] = useState<LatLngExpression>([-34.6118, -58.4173]);
@@ -18,17 +32,16 @@ export function Map() {
     popupAnchor: [0, -32],
   });
 
-
   useEffect(() => {}, [center]);
 
   // useEffect(() => {
   //   map.on('zoom', onMove)
   //   return () => {
-      
+
   //   }
   // }, [map, onMove])
 
-  function Load (lat, lon) {
+  function Load(lat, lon) {
     return `<Circle
       center={[${lat}, ${lon}]}
       pathOptions={{ fillColor: 'blue' }}
@@ -37,16 +50,16 @@ export function Map() {
   }
 
   function Eventos() {
-    const [position, setPosition] = useState(null)
+    const [position, setPosition] = useState(null);
     const map = useMapEvents({
       click() {
-        map.locate()
+        map.locate();
       },
       locationfound(e) {
-        setPosition(e.latlng)
+        setPosition(e.latlng);
         //map.flyTo(e.latlng, 13)
       },
-    })
+    });
   }
 
   return (
@@ -60,9 +73,7 @@ export function Map() {
         zoom={4}
         zoomControl={false}
         attributionControl={false}
-        
       >
-
         {/* Capa base OSM (Contiene las atribuciones)*/}
         <TileLayer
           attribution='<a target="_blank" href="https://leafletjs.com/">Leaflet</a> | &copy; IGN - <a target="_blank" href="https://mapa.ign.gob.ar/">Argenmap</a> | &copy; <a target="_blank" href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
@@ -72,15 +83,17 @@ export function Map() {
         <TileLayer url="https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png" />
 
         {/* Controles UI */}
-        <ZoomControl position="topleft" zoomOutTitle={"Alejar"} zoomInTitle={"Acercar"}></ZoomControl>
+        <ZoomControl
+          position="bottomleft"
+          zoomOutTitle={"Alejar"}
+          zoomInTitle={"Acercar"}
+        ></ZoomControl>
         {/* <AttributionControl className="" position="bottomleft" prefix={false} /> */}
         <AttributionControl position="bottomright" prefix={false} />
         <ScaleControl position="bottomleft" maxWidth={200}></ScaleControl>
 
-
         {/* CAPAS y control de capas */}
-        <LayersControl position="topright">
-
+        <LayersControl position="bottomright">
           {/* Capas de base */}
           <LayersControl.BaseLayer name="Mapa original">
             <TileLayer url="https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png" />
@@ -89,24 +102,24 @@ export function Map() {
           <LayersControl.BaseLayer name="Modo oscuro">
             <TileLayer url="https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/argenmap_oscuro@EPSG%3A3857@png/{z}/{x}/{-y}.png" />
           </LayersControl.BaseLayer>
-          
+
           <LayersControl.BaseLayer name="Escala de grises">
             <TileLayer url="https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_gris@EPSG%3A3857@png/{z}/{x}/{-y}.png" />
           </LayersControl.BaseLayer>
-          
+
           <LayersControl.BaseLayer name="Estilo topográfico">
             <TileLayer url="https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_topo@EPSG%3A3857@png/{z}/{x}/{-y}.png" />
           </LayersControl.BaseLayer>
 
           <LayersControl.BaseLayer name="Estilo hibrido">
             <TileLayer url="https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/mapabase_hibrido@EPSG%3A3857@png/{z}/{x}/{-y}.png" />
-          </LayersControl.BaseLayer>  
+          </LayersControl.BaseLayer>
 
           <LayersControl.Overlay checked name="Secundarios Técnicos">
             <LayerGroup>
               <Circle
                 center={[-34, -35]}
-                pathOptions={{ fillColor: 'blue' }}
+                pathOptions={{ fillColor: "blue" }}
                 radius={200000}
               />
             </LayerGroup>
@@ -116,7 +129,7 @@ export function Map() {
             <LayerGroup>
               <Circle
                 center={[-34, -35]}
-                pathOptions={{ fillColor: 'blue' }}
+                pathOptions={{ fillColor: "blue" }}
                 radius={200000}
               />
             </LayerGroup>
@@ -126,7 +139,7 @@ export function Map() {
             <LayerGroup>
               <Circle
                 center={[-34, -35]}
-                pathOptions={{ fillColor: 'green' }}
+                pathOptions={{ fillColor: "green" }}
                 radius={200000}
               />
             </LayerGroup>
@@ -134,12 +147,9 @@ export function Map() {
 
           <LayersControl.Overlay checked name="Capa de ciudades">
             <LayerGroup>
-
               <Load lat={-30} lon={-45} />
-
             </LayerGroup>
           </LayersControl.Overlay>
-
         </LayersControl>
 
         <Marker position={center} icon={customIcon}>
