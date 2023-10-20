@@ -5,7 +5,7 @@ import { MapContainer, useMapEvents, TileLayer, AttributionControl, ZoomControl,
 import { Circle, CircleMarker, Marker, Popup, Tooltip } from "react-leaflet";
 import L, { } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import {Capas} from "@/components/mapComponents/Capas";
+import {Capas, Cargar} from "@/components/mapComponents/Capas";
 import {Controladores} from "@/components/mapComponents/Controladores";
 
 

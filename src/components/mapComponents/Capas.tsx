@@ -2,11 +2,11 @@ import { LayerGroup, TileLayer, LayersControl, Circle, Marker, Popup } from "rea
 import { useState, useEffect } from "react";
 
 async function getRandomPhoto() {
-    const randomPhotoId = getRandomInt(1, 10);
     const photo = await fetch(
-      `https://jsonplaceholder.typicode.com/photos/${randomPhotoId}`
+      `https://jsonplaceholder.typicode.com/photos/7`
     ).then((response) => response.json());
   
+    console.log(photo);
     return photo;
 }
 
@@ -15,18 +15,13 @@ export async function getStaticProps() {
     try {
       photo = await getRandomPhoto();
     } catch (e) {
-      /**
-       * If something goes wrong, we return a 404 page
-       */
+      console.log("ERROR" + e)
       return {
-        notFound: true,
+        notfound: true,
       };
     }
   
     if (!photo) {
-      /**
-       * If we don't get a `photo` back, we return a 404 page
-       */
       return {
         notFound: true,
       };``
@@ -39,22 +34,35 @@ export async function getStaticProps() {
     };
   }
 
+  export function Cargar() {
+    const res = getStaticProps();
+    const data = res.props;
+    data.forEach(element => {
+
+      return (
+        <div>
+            <h1>{element.title}</h1>
+            <img src={element.url} />
+        </div>
+        );
+
+    });
+  }
+    
+
+
+
+
 export function Capas() {
 
 return(
 <div>
-    hola<Cargar />
+    <Cargar />
 </div>
 
 );
+}
 
-function Cargar({ photo }) {
-    return (
-        <div>
-            <h1>{photo.title}</h1>
-            <img src={photo.url} />
-        </div>
-        );
 
     /*const [data, setData] = useState(null)
     const [isLoading, setLoading] = useState(true)
@@ -89,17 +97,11 @@ function Cargar({ photo }) {
         });
     })
 */
-}
-
-    
-}
 
 
 
 
-
-
-function getLocation(location:string){
+function getLocation(ciudad, provincia, direccion, ){
     return fetch(
     "https://nominatim.openstreetmap.org/search",
     {
@@ -124,7 +126,7 @@ function getLocation(location:string){
     });
 }
 
-
+ 
 
 
 
