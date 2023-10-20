@@ -3,8 +3,6 @@ import {
   AccordionContent,
   AccordionItem,
   AccordionTrigger,
-} from "@/components/ui/accordion";
-import {
   Sheet,
   SheetClose,
   SheetContent,
@@ -13,10 +11,10 @@ import {
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from "@/components/ui/sheet";
-import { Switch } from "@/components/ui/switch";
+  Label,
+  Switch,
+} from "@/components/ui";
 import { SvgFiltros } from "../../src/assets/icons/SvgIcons";
-import { Label } from "@/components/ui/label";
 
 export const FilterSheet = () => {
   return (
