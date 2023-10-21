@@ -1,5 +1,5 @@
-import logoInnet from "../../assets/images/logo-inet.png";
-import logoMinisterio from "../../assets/images/ministerio.png";
+import logoInnet from "../assets/images/logo-inet.png";
+import logoMinisterio from "../assets/images/ministerio.png";
 import Image from "next/image";
 
 export function HeaderInnet() {
