@@ -7,7 +7,7 @@ export const StepThree = ({ setSteps }) => {
       <Label className="text-black text-sm">
         Por favor, da acceso a tu ubicación o ingresa tu código postal
       </Label>
-      <div>
+      <div className="flex flex-col gap-2">
         <Input type="number" placeholder="Código postal" />
         <button
           onClick={() => {

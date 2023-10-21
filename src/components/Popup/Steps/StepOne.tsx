@@ -2,11 +2,11 @@ import { Label } from "@/components/ui";
 
 export const StepOne = ({ setSteps }) => {
   return (
-    <>
+    <div className="flex flex-col gap-3 font-bold">
       <Label className="text-black text-sm">
         ¿Qué tipo de establecimiento estás buscando?
       </Label>
-      <div>
+      <div className="flex gap-3">
         <button
           onClick={() => {
             setSteps(2);
@@ -29,7 +29,7 @@ export const StepOne = ({ setSteps }) => {
           Formación Profesional
         </button>
       </div>
-    </>
+    </div>
   );
 };
 
