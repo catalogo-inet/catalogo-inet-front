@@ -12,8 +12,8 @@ import {
 export const StepTwo = ({ setSteps }) => {
   return (
     <>
-      <Label className="text-black text-sm">
-        ¿Qué orientación querés estudiar?
+      <Label className="text-black font-bold text-2xl mb-5">
+        ¿Qué orientacion queres estudiar?
       </Label>
       <Select>
         <SelectTrigger className="w-[180px]">
