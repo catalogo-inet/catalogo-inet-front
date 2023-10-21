@@ -5,7 +5,7 @@ import { MapContainer, useMapEvents, TileLayer, AttributionControl, ZoomControl,
 import { Circle, CircleMarker, Marker, Popup, Tooltip } from "react-leaflet";
 import L, { } from "leaflet";
 import "leaflet/dist/leaflet.css";
-import {Capas, Cargar} from "@/components/mapComponents/Capas";
+import { Capas } from "@/components/mapComponents/Capas";
 import {Controladores} from "@/components/mapComponents/Controladores";
 
 
@@ -70,12 +70,11 @@ function Localize(){
 
 
   return (
-      <div className="w-full h-screen z-10">
+      <>
       {/* <button onClick={Lokeame()}>click</button> */}
-      <Capas />
 
       <MapContainer
-        style={{ height: "100vh", width: "100%" }}
+        style={{ height: "90vh", width: "80vw" }}
         key={center.join(",")}
         center={center}
         maxBounds={limites_externos}
@@ -103,17 +102,18 @@ function Localize(){
 
         {/* CAPAS y control de capas */}
         {/* <Capas /> */}
+        <Capas />
+
 
         <Marker position={center} icon={customIcon}>
           <Popup>AQUÍ PUEDES COLOCAR TU CONTENIDO DE MARCADOR</Popup>
         </Marker>
-        <ZoomControl position="bottomleft" />
 
         
 
         <Eventos />
       </MapContainer>
-      </div>
+      </>
 
   );
 }
