@@ -63,9 +63,9 @@ export function Map() {
   }
 
   return (
-    <div className="w-full h-screen z-0">
+    <div className="w-full h-screen">
       <MapContainer
-        style={{ height: "100vh", width: "100%" }}
+        style={{ height: "100vh", width: "100%", zIndex: 1 }}
         key={center.join(",")}
         center={center}
         minZoom={4}

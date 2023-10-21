@@ -7,11 +7,9 @@ import { Layout } from "@/components/Layout";
 
 const Home = () => {
   return (
-    <main className="min-h-screen bg-[var(--color-white)]">
-      <Layout>
-        <ListOfFormations />
-      </Layout>
-    </main>
+    <Layout>
+      <ListOfFormations />
+    </Layout>
   );
 };
 
