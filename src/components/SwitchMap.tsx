@@ -1,7 +1,11 @@
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+interface Props {
+  state: boolean;
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export function SwitchMap({ state, setState }) {
+export function SwitchMap({ state, setState }: Props) {
   const handleToggle = () => {
     setState(!state);
   };
@@ -15,7 +19,7 @@ export function SwitchMap({ state, setState }) {
         <Switch id="activar-mapa" onClick={handleToggle} />
       </div>
       <Label htmlFor="activar-mapa" className="text-black text-sm">
-        Mapa
+        Usar mapa
       </Label>
     </div>
   );

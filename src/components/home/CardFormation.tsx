@@ -1,6 +1,6 @@
 import { SvgPoint } from "@/assets/icons/SvgIcons";
 import json from "../../mocks/intituciones.json";
-
+import Link from "next/link";
 interface FormationProps {
   city: string;
   name: string;
@@ -18,9 +18,11 @@ export function CardFormation({
   phone,
   email,
 }: FormationProps) {
-  console.log(json);
   return (
-    <div className="text-black rounded-xl overflow-hidden flex flex-col shadow-md bg-gray-200 ">
+    <Link
+      href={`/institucion/${location}`}
+      className="text-black rounded-xl overflow-hidden flex flex-col shadow-md bg-gray-200 hover:scale-105 cursor-pointer"
+    >
       <header className="bg-[var(--color-blue)] p-5">
         <h2 className="text-white text-xl">
           {city} - {name}
@@ -38,6 +40,6 @@ export function CardFormation({
         </button>
         <SvgPoint />
       </footer>
-    </div>
+    </Link>
   );
 }

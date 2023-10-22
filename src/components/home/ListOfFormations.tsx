@@ -6,7 +6,7 @@ const list = [
   {
     city: "Buenos Aires",
     name: "Escuela Técnica Otto Krause",
-    location: "Av. Independencia 3447",
+    location: "Av. Garay N° 1507",
     province: "Buenos Aires",
     phone: "+54 11 4932-1513",
     email: "info@eotokrause.com.ar",
@@ -14,7 +14,7 @@ const list = [
   {
     city: "Córdoba",
     name: "Instituto Técnico Salesiano",
-    location: "Av. Colón 425",
+    location: "Constantino Carbel Nª 426",
     province: "Córdoba",
     phone: "+54 351 4280540",
     email: "info@itsc.edu.ar",
@@ -22,7 +22,7 @@ const list = [
   {
     city: "Mendoza",
     name: "Escuela Técnica General Las Heras",
-    location: "Av. San Martín 275",
+    location: "Rivadavia y Luis Braile",
     province: "Mendoza",
     phone: "+54 261 4201456",
     email: "etghmendoza@gmail.com",
@@ -30,7 +30,7 @@ const list = [
   {
     city: "Rosario",
     name: "Escuela Técnica Superior Oro Verde",
-    location: "Av. Aristóbulo del Valle 7515",
+    location: "Vélez Sarsfield Nº 1200",
     province: "Santa Fe",
     phone: "+54 341 4641546",
     email: "info@etsov.edu.ar",
