@@ -1,12 +1,14 @@
-import { Map } from "@/components/Map";
+"use client";
 
-export default function Home() {
+import { ListOfFormations } from "@/components/home/ListOfFormations";
+import { Layout } from "@/components/Layout";
+
+const Home = () => {
   return (
-    <div className="min-h-screen flex-col flex justify-center items-center">
-      <h1>Mapa de prueba</h1>
-      <div className="mx-auto">
-        <Map />
-      </div>
-    </div>
+    <Layout>
+      <ListOfFormations />
+    </Layout>
   );
-}
+};
+
+export default Home;
