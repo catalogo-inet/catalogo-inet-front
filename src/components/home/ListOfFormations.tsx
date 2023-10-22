@@ -4,6 +4,7 @@ import { CardFormation } from "./CardFormation";
 
 const list = [
   {
+    id: 9,
     city: "Buenos Aires",
     name: "Escuela Técnica Otto Krause",
     location: "Av. Garay N° 1507",
@@ -12,6 +13,7 @@ const list = [
     email: "info@eotokrause.com.ar",
   },
   {
+    id: 60,
     city: "Córdoba",
     name: "Instituto Técnico Salesiano",
     location: "Constantino Carbel Nª 426",
@@ -20,6 +22,7 @@ const list = [
     email: "info@itsc.edu.ar",
   },
   {
+    id: 62,
     city: "Mendoza",
     name: "Escuela Técnica General Las Heras",
     location: "Rivadavia y Luis Braile",
@@ -28,6 +31,7 @@ const list = [
     email: "etghmendoza@gmail.com",
   },
   {
+    id: 91,
     city: "Rosario",
     name: "Escuela Técnica Superior Oro Verde",
     location: "Vélez Sarsfield Nº 1200",
@@ -45,10 +49,12 @@ export function ListOfFormations() {
       </h1>
       <div className="flex flex-col gap-7 sm:grid sm:grid-cols-2 sm:justify-between mt-5">
         {list.map((formation, i) => {
-          const { city, name, location, province, email, phone } = formation;
+          const { id, city, name, location, province, email, phone } =
+            formation;
           return (
             <CardFormation
               key={i}
+              id={id}
               city={city}
               name={name}
               location={location}
