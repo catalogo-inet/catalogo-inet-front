@@ -1,7 +1,11 @@
 import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
+interface Props {
+  state: boolean;
+  setState: React.Dispatch<React.SetStateAction<boolean>>;
+}
 
-export function SwitchMap({ state, setState }) {
+export function SwitchMap({ state, setState }: Props) {
   const handleToggle = () => {
     setState(!state);
   };
