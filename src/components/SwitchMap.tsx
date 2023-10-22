@@ -15,7 +15,7 @@ export function SwitchMap({ state, setState }) {
         <Switch id="activar-mapa" onClick={handleToggle} />
       </div>
       <Label htmlFor="activar-mapa" className="text-black text-sm">
-        Mapa
+        Usar mapa
       </Label>
     </div>
   );
