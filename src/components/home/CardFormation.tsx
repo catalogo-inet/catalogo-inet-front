@@ -20,7 +20,7 @@ export function CardFormation({
 }: FormationProps) {
   return (
     <Link
-      href={`/institucion/${name}`}
+      href={`/institucion/${location}`}
       className="text-black rounded-xl overflow-hidden flex flex-col shadow-md bg-gray-200 hover:scale-105 cursor-pointer"
     >
       <header className="bg-[var(--color-blue)] p-5">

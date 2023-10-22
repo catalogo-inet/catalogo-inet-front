@@ -1,14 +1,20 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { MapContainer, useMapEvents, TileLayer, AttributionControl, ZoomControl, ScaleControl, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  useMapEvents,
+  TileLayer,
+  AttributionControl,
+  ZoomControl,
+  ScaleControl,
+  useMap,
+} from "react-leaflet";
 import { Circle, CircleMarker, Marker, Popup, Tooltip } from "react-leaflet";
-import L, { } from "leaflet";
+import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Capas } from "@/components/mapComponents/Capas";
-import {Controladores} from "@/components/mapComponents/Controladores";
-
-
+import { Controladores } from "@/components/mapComponents/Controladores";
 
 export function Map() {
   const extremo_noroeste = [-20, -80];
@@ -25,45 +31,39 @@ export function Map() {
     popupAnchor: [0, -32],
   });
 
-
   useEffect(() => {}, [center]);
 
   // useEffect(() => {
   //   map.on('zoom', onMove)
   //   return () => {
-      
+
   //   }
   // }, [map, onMove])
 
-  function Load (lat:number, lon:number) {
-
-    return(
-    <Circle
-      center={L.latLng(lat, lon)}
-      pathOptions={{ fillColor: 'yellow' }}
-      radius={200000}
-    />
+  function Load(lat: number, lon: number) {
+    return (
+      <Circle
+        center={L.latLng(lat, lon)}
+        pathOptions={{ fillColor: "yellow" }}
+        radius={200000}
+      />
     );
   }
 
   function Eventos() {
-    const [position, setPosition] = useState(null)
+    const [position, setPosition] = useState(null);
     const mapEvts = useMapEvents({
       locationfound(e) {
-        setPosition(e.latlng)
-        mapEvts.flyTo(e.latlng, 8)
+        setPosition(e.latlng);
+        mapEvts.flyTo(e.latlng, 8);
       },
-    })
+    });
   }
 
-
-
-function Localize(){
-  const map = useMap();
-  map.locate(); // Se usa para pedir la ubicacion y centrar el mapa ahi.
-
-}
-
+  function Localize() {
+    const map = useMap();
+    map.locate(); // Se usa para pedir la ubicacion y centrar el mapa ahi.
+  }
 
   return (
     <div className="w-full h-screen">
@@ -77,10 +77,8 @@ function Localize(){
         zoom={4}
         zoomControl={false}
         attributionControl={false}
-        
       >
-
-      <Localize />
+        <Localize />
 
         {/* Capa base OSM (Contiene las atribuciones)*/}
         <TileLayer
@@ -93,21 +91,16 @@ function Localize(){
         {/* Controles UI */}
         <Controladores />
 
-
         {/* CAPAS y control de capas */}
         {/* <Capas /> */}
         <Capas />
-
 
         <Marker position={center} icon={customIcon}>
           <Popup>AQUÍ PUEDES COLOCAR TU CONTENIDO DE MARCADOR</Popup>
         </Marker>
 
-        
-
         <Eventos />
       </MapContainer>
-      </>
-
+    </div>
   );
 }
