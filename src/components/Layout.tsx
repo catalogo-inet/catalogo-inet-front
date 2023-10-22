@@ -1,4 +1,4 @@
-import { HeaderInnet } from "./HeaderInnet";
+import { HeaderInet } from "./HeaderInet";
 import { useState } from "react";
 import { SwitchMap } from "./SwitchMap";
 import { Main } from "./Main";
@@ -10,7 +10,7 @@ export function Layout({ children }) {
 
   return (
     <div className="min-h-screen bg-[var(--color-white)]">
-      <HeaderInnet />
+      <HeaderInet />
       <Main className={showMap ? "" : "pt-10"}>
         <div className="absolute top-0 left-0 px-6 py-5 flex justify-between z-50 w-full">
           <SwitchMap state={showMap} setState={setShowMap} />

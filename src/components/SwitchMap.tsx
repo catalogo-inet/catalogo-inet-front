@@ -10,7 +10,7 @@ export function SwitchMap({ state, setState }: Props) {
     setState(!state);
   };
   return (
-    <div className="bg-white rounded-full py-1 px-2 flex items-center gap-2">
+    <div className="bg-white rounded-full py-1 px-2 flex items-center gap-2 shadow-md">
       <div
         className={`${
           state ? "bg-blue-400" : "bg-gray-300"
