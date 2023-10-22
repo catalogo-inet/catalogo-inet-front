@@ -9,7 +9,7 @@ import {
 import { Layout } from "@/components/Layout";
 import { useFetch } from "@/hooks/useFetch";
 
-const Detail = ({ params }) => {
+const Detail = ({ params }: { params: { direccion: string } }) => {
   const { direccion } = params;
   const direccionDecodificada = decodeURIComponent(direccion);
   const { data, isLoading, hasError } = useFetch(
