@@ -29,8 +29,7 @@ export const FilterSheet = () => {
     `http://localhost:7000/api/jurisdicciones`
   );
 
-  const { filters, setFilterFalse, setFilterTrue, toggleFilterState } =
-    useFilters();
+  const { filters, toggleTiposState } = useFilters();
 
   return (
     <Sheet>

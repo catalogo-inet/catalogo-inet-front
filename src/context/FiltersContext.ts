@@ -37,8 +37,7 @@ export interface FiltersState {
 }
 
 export const FiltersContext = createContext({
-  filters: {} as FiltersState, // Initialize with an empty FiltersState
-  setFilterTrue: (property) => {}, // Initialize with empty functions
-  toggleFilterState: (property) => {},
-  setFilterFalse: (property) => {},
+  filters: {} as FiltersState,
+  toggleProvinciasState: (property) => {},
+  toggleTiposState: (property) => {},
 });

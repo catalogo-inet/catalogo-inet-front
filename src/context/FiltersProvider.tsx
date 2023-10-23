@@ -38,41 +38,19 @@ export const FiltersProvider = (props) => {
     },
   });
 
-  const setFilterTrue = (property) => {
-    setFilters({
-      ...filters,
-      tiposInstitucion: {
-        ...filters.tiposInstitucion,
-        [property]: true,
-      },
-      provincias: {
-        ...filters.provincias,
-        [property]: true,
-      },
-    });
-  };
-
-  const setFilterFalse = (property) => {
-    setFilters({
-      ...filters,
-      tiposInstitucion: {
-        ...filters.tiposInstitucion,
-        [property]: false,
-      },
-      provincias: {
-        ...filters.provincias,
-        [property]: false,
-      },
-    });
-  };
-
-  const toggleFilterState = (property) => {
+  const toggleTiposState = (property) => {
     setFilters((prevFilters) => ({
       ...prevFilters,
       tiposInstitucion: {
         ...prevFilters.tiposInstitucion,
         [property]: !prevFilters.tiposInstitucion[property],
       },
+    }));
+  };
+
+  const toggleProvinciasState = (property) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
       provincias: {
         ...prevFilters.provincias,
         [property]: !prevFilters.provincias[property],
@@ -83,9 +61,8 @@ export const FiltersProvider = (props) => {
   return (
     <FiltersContext.Provider
       value={{
-        setFilterTrue: () => setFilterTrue,
-        toggleFilterState: () => toggleFilterState,
-        setFilterFalse: () => setFilterFalse,
+        toggleProvinciasState,
+        toggleTiposState,
         filters,
       }}
     >
