@@ -7,7 +7,8 @@ import FilterSheet from "./FilterSheet";
 import { FiltersProvider } from "@/context/FiltersProvider";
 import { Switch } from "./ui";
 import { ReactNode } from "react";
-
+import { useFilters } from "@/hooks/useFilters";
+import { Popup } from "@/components/Popup/Popup";
 interface Props {
   children: ReactNode;
 }
@@ -19,12 +20,16 @@ export function Layout({ children }: Props) {
     setShowMap(!showMap);
   };
 
+  const { filters } = useFilters();
+  const { codigoPostal } = filters;
+
   return (
     <FiltersProvider>
-      <div className="min-h-screen bg-[var(--color-white)]">
+      <div className="relative min-h-screen bg-[var(--color-white)]">
+        {!codigoPostal && <Popup />}
         <HeaderInet />
         <Main className={showMap ? "" : "pt-10"}>
-          <div className="absolute top-0 left-0 px-6 py-5 flex justify-between z-50 w-full">
+          <div className="absolute top-0 left-0 px-6 py-5 flex justify-between z-40 w-full">
             <Switch onClick={handleToggle} />
             <FilterSheet />
           </div>
