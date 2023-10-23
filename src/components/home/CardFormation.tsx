@@ -31,7 +31,8 @@ export function CardFormation({
         </h2>
       </header>
       <section className="p-5 text-base font-semibold">
-        <p>Localidad: {location}</p>
+        <p>Dirección: {location}</p>
+        <p>Localidad: {city}</p>
         <p>Provincia: {province}</p>
         <p>Telefono: {phone}</p>
         <p>Correo Electronico: {email}</p>

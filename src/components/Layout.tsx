@@ -1,4 +1,5 @@
 import { HeaderInet } from "./HeaderInet";
+import { FooterInet } from "./FooterInet";
 import { useState } from "react";
 import { SwitchMap } from "./SwitchMap";
 import { Main } from "./Main";
@@ -19,6 +20,7 @@ export function Layout({ children }) {
         {!showMap && children}
       </Main>
       {showMap && <Map />}
+      <FooterInet />
     </div>
   );
 }

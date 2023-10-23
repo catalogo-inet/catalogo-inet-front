@@ -25,7 +25,7 @@ export const FilterSheet = () => {
           <Label className="text-black text-sm">Filtros</Label>
         </button>
       </SheetTrigger>
-      <SheetContent className="h-[90%] bg-white shadow-md text-black z-50">
+      <SheetContent className="h-[100%] bg-white shadow-md text-black z-50">
         <SheetHeader>
           <SheetTitle>Filtros</SheetTitle>
           <SheetDescription>
