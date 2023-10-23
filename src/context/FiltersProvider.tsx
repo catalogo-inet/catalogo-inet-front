@@ -2,6 +2,16 @@ import { useState } from "react";
 import { FiltersContext } from "@/context/FiltersContext";
 
 export const FiltersProvider = (props) => {
-  const [first, setfirst] = useState(second);
-  return <FiltersContext.Provider>{props.children}</FiltersContext.Provider>;
+  const [profesional, setProfesional] = useState(false);
+
+  return (
+    <FiltersContext.Provider
+      value={{
+        profesionalTrue: () => setProfesional(true),
+        profesional,
+      }}
+    >
+      {props.children}
+    </FiltersContext.Provider>
+  );
 };
