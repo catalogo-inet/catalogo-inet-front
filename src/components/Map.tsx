@@ -68,6 +68,7 @@ export function Map() {
   return (
     <div className="w-full h-[85vh]">
       <MapContainer
+
         style={{ height: "85vh", width: "100%", zIndex: 1 }}
         key={center.join(",")}
         center={center}
