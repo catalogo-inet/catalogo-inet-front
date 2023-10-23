@@ -13,7 +13,7 @@ import {
 import { Circle, CircleMarker, Marker, Popup, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Capas } from "@/components/mapComponents/Capas";
+import { Capas, customIcon } from "@/components/mapComponents/Capas";
 import { Controladores } from "@/components/mapComponents/Controladores";
 
 export function Map() {
@@ -24,13 +24,6 @@ export function Map() {
     -37.32167, -59.13316,
   ]);
 
-  const customIcon = L.icon({
-    iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149060.png",
-    iconSize: [32, 32],
-    iconAnchor: [16, 32],
-    popupAnchor: [0, -32],
-  });
-
   useEffect(() => {}, [center]);
 
   // useEffect(() => {
@@ -39,16 +32,6 @@ export function Map() {
 
   //   }
   // }, [map, onMove])
-
-  function Load(lat: number, lon: number) {
-    return (
-      <Circle
-        center={L.latLng(lat, lon)}
-        pathOptions={{ fillColor: "yellow" }}
-        radius={200000}
-      />
-    );
-  }
 
   function Eventos() {
     const [position, setPosition] = useState(null);
@@ -68,7 +51,7 @@ export function Map() {
   return (
     <div className="w-full h-screen">
       <MapContainer
-        style={{ height: "100%", width: "90%", zIndex: 1 }}
+        style={{ height: "100%", width: "100%", zIndex: 1 }}
         key={center.join(",")}
         center={center}
         maxBounds={limites_externos}
@@ -77,22 +60,16 @@ export function Map() {
         zoom={4}
         zoomControl={false}
         attributionControl={false}
+        scrollWheelZoom={false}
+        touchZoom={center}
       >
         <Localize />
 
-        {/* Capa base OSM (Contiene las atribuciones)*/}
-        <TileLayer
-          attribution='<a target="_blank" href="https://leafletjs.com/">Leaflet</a> | &copy; IGN - <a target="_blank" href="https://mapa.ign.gob.ar/">Argenmap</a> | &copy; <a target="_blank" href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-          url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-
-        <TileLayer url="https://wms.ign.gob.ar/geoserver/gwc/service/tms/1.0.0/capabaseargenmap@EPSG%3A3857@png/{z}/{x}/{-y}.png" />
-
+        
         {/* Controles UI */}
         <Controladores />
 
         {/* CAPAS y control de capas */}
-        {/* <Capas /> */}
         <Capas />
 
         <Marker position={center} icon={customIcon}>
