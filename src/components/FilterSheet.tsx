@@ -22,7 +22,9 @@ export const FilterSheet = () => {
   const { data, isLoading, hasError } = useFetch(
     `http://localhost:7000/api/jurisdicciones`
   );
-  const { profesional, profesionalTrue } = useFilters();
+
+  const { filters, setFilterFalse, setFilterTrue, toggleFilterState } =
+    useFilters();
 
   return (
     <Sheet>
@@ -49,7 +51,13 @@ export const FilterSheet = () => {
                   <Label htmlFor="secundaria" className="text-black text-sm">
                     Secundaria
                   </Label>
-                  <Switch id="tecnicatura-superior" />
+                  <Switch
+                    id="tecnicatura-superior"
+                    checked={filters.tiposInstitucion.Superior}
+                    onClick={() => {
+                      toggleFilterState(filters.tiposInstitucion.Superior);
+                    }}
+                  />
                   <Label
                     htmlFor="tecnicatura-superior"
                     className="text-black text-sm"

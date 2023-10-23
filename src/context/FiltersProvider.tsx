@@ -1,8 +1,8 @@
 import { useState } from "react";
-import { FiltersContext } from "@/context/FiltersContext";
+import { FiltersState, FiltersContext } from "@/context/FiltersContext";
 
-export const FiltersProvider = (props: any) => {
-  const [filters, setFilters] = useState({
+export const FiltersProvider = (props) => {
+  const [filters, setFilters] = useState<FiltersState>({
     tiposInstitucion: {
       SecundariaTecnica: true,
       EPS: true,
@@ -38,19 +38,54 @@ export const FiltersProvider = (props: any) => {
     },
   });
 
-  const setFilterTrue = (property: any) => {
-    setFilters({ ...filters, [property]: true });
+  const setFilterTrue = (property) => {
+    setFilters({
+      ...filters,
+      tiposInstitucion: {
+        ...filters.tiposInstitucion,
+        [property]: true,
+      },
+      provincias: {
+        ...filters.provincias,
+        [property]: true,
+      },
+    });
   };
 
-  const setFilterFalse = (property: any) => {
-    setFilters({ ...filters, [property]: false });
+  const setFilterFalse = (property) => {
+    setFilters({
+      ...filters,
+      tiposInstitucion: {
+        ...filters.tiposInstitucion,
+        [property]: false,
+      },
+      provincias: {
+        ...filters.provincias,
+        [property]: false,
+      },
+    });
+  };
+
+  const toggleFilterState = (property) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      tiposInstitucion: {
+        ...prevFilters.tiposInstitucion,
+        [property]: !prevFilters.tiposInstitucion[property],
+      },
+      provincias: {
+        ...prevFilters.provincias,
+        [property]: !prevFilters.provincias[property],
+      },
+    }));
   };
 
   return (
     <FiltersContext.Provider
       value={{
-        setFilterTrue,
-        setFilterFalse,
+        setFilterTrue: () => setFilterTrue,
+        toggleFilterState: () => toggleFilterState,
+        setFilterFalse: () => setFilterFalse,
         filters,
       }}
     >
