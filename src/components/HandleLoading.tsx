@@ -5,7 +5,7 @@ type Props = {
   isLoading?: boolean;
 };
 
-export function HandleError({ children, isLoading }: Props) {
+export function HandleLoading({ children, isLoading }: Props) {
   if (!isLoading) return children;
   return <h1>Cargando...</h1>;
 }

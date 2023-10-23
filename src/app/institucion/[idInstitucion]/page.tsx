@@ -10,6 +10,7 @@ import { Layout } from "@/components/Layout";
 import { useFetch } from "@/hooks/useFetch";
 import { Minimap } from "@/components/Minimap";
 import { HandleError } from "@/components/handleError";
+import { HandleLoading } from "@/components/HandleLoading";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
@@ -42,9 +43,13 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
       </div>
       <div className="w-50 h-screen">
         <HandleError hasError={hasError}>
-          data.lat ? (
-          <Minimap lat={data.lat} lon={data.lon} />) : (
-          <h1>Coordenadas no encontradas</h1>)
+          <HandleLoading isLoading={isLoading}>
+            {data && data.lat ? (
+              <Minimap lat={data.lat} lon={data.lon} />
+            ) : (
+              <h1>Coordenadas no encontradas</h1>
+            )}
+          </HandleLoading>
         </HandleError>
       </div>
     </Layout>
