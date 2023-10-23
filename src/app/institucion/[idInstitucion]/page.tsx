@@ -15,6 +15,10 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
     `http://localhost:7000/api/instituciones/${idInstitucion}`
   );
 
+  const arrayOrientaciones = data?.orientaciones.map(
+    (orientacion: string) => orientacion
+  );
+
   return (
     <Layout>
       <div className="mt-10">
@@ -28,9 +32,9 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
           <AccordionItem value="item-1">
             <AccordionTrigger>Orientaciones</AccordionTrigger>
             {data &&
-              data.planes.map((plan, i) => {
+              arrayOrientaciones.map((orientacion: string, i: number) => {
                 return (
-                  <AccordionContent key={i}>{plan.nombre}</AccordionContent>
+                  <AccordionContent key={i}>{orientacion}</AccordionContent>
                 );
               })}
           </AccordionItem>
