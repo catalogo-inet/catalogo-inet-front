@@ -23,8 +23,7 @@ export const FilterSheet = () => {
     `http://localhost:7000/api/jurisdicciones`
   );
 
-  const { filters, setFilterFalse, setFilterTrue, toggleFilterState } =
-    useFilters();
+  const { filters, toggleTiposState } = useFilters();
 
   return (
     <Sheet>
@@ -55,7 +54,7 @@ export const FilterSheet = () => {
                     id="tecnicatura-superior"
                     checked={filters.tiposInstitucion.Superior}
                     onClick={() => {
-                      toggleFilterState(filters.tiposInstitucion.Superior);
+                      toggleTiposState("Superior");
                     }}
                   />
                   <Label
