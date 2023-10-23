@@ -18,6 +18,12 @@ import { useFetch } from "@/hooks/useFetch";
 import { useFilters } from "@/hooks/useFilters";
 import { SvgFiltros } from "../assets/icons/SvgIcons";
 
+const tiposInstitucion = [
+  "Secundaria",
+  "Tecnicatura superior",
+  "Formacion superior",
+];
+
 export const FilterSheet = () => {
   const { data, isLoading, hasError } = useFetch(
     `http://localhost:7000/api/jurisdicciones`
@@ -46,50 +52,47 @@ export const FilterSheet = () => {
             <Accordion type="single" collapsible className="w-full">
               <AccordionItem value="item-1">
                 <AccordionTrigger>Tipo de institución</AccordionTrigger>
-                <AccordionContent className="flex flex-col items-center">
-                  <Switch id="secundaria" />
-                  <Label htmlFor="secundaria" className="text-black text-sm">
-                    Secundaria
-                  </Label>
-                  <Switch
-                    id="tecnicatura-superior"
-                    checked={filters.tiposInstitucion.Superior}
-                    onClick={() => {
-                      toggleFilterState(filters.tiposInstitucion.Superior);
-                    }}
-                  />
-                  <Label
-                    htmlFor="tecnicatura-superior"
-                    className="text-black text-sm"
-                  >
-                    Tecnicatura superior
-                  </Label>
-                  <Switch id="formacion-profesional" />
-                  <Label
-                    htmlFor="formacion-profesional"
-                    className="text-black text-sm"
-                  >
-                    Formación Profesional
-                  </Label>
+                <AccordionContent>
+                  <div className="flex flex-col items-center">
+                    {tiposInstitucion.map((tipo, i) => {
+                      return (
+                        <div
+                          key={i}
+                          className="flex w-full justify-start gap-3"
+                        >
+                          <Switch id={tipo} />
+                          <Label htmlFor={tipo} className="text-black text-sm">
+                            {tipo}
+                          </Label>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </AccordionContent>
               </AccordionItem>
               <AccordionItem value="item-2">
                 <AccordionTrigger>Provincia</AccordionTrigger>
-                <AccordionContent className="flex flex-col items-center">
-                  {!isLoading &&
-                    data.map((item: any) => {
-                      return (
-                        <>
-                          <Switch id={item.Descripcion} />
-                          <Label
-                            htmlFor={item.Descripcion}
-                            className="text-black text-sm"
+                <AccordionContent>
+                  <div className="flex flex-col items-center max-h-44 overflow-scroll">
+                    {!isLoading &&
+                      data.map((item: any, i: number) => {
+                        return (
+                          <div
+                            key={i}
+                            className="w-full flex justify-start gap-3 pl-3"
                           >
-                            {item.Descripcion}
-                          </Label>
-                        </>
-                      );
-                    })}
+                            <Switch id={item.Descripcion} />
+                            <Label
+                              htmlFor={item.Descripcion}
+                              className="text-black text-sm"
+                            >
+                              {item.Descripcion}
+                            </Label>
+                          </div>
+                        );
+                      })}
+                  </div>
+
                   <Switch id="buenos-aires" />
                   <Label htmlFor="buenos-aires" className="text-black text-sm">
                     Buenos Aires
