@@ -16,9 +16,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
     `http://localhost:7000/api/instituciones/${idInstitucion}`
   );
 
-  const arrayOrientaciones = data?.orientaciones.map(
-    (orientacion: string) => orientacion
-  );
+  const arrayOrientaciones = data?.orientaciones.split(",");
 
   return (
     <Layout>
@@ -41,9 +39,18 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
           </AccordionItem>
         </Accordion>
       </div>
-      {/* Contenedor del minimapa. No va acá. */}
       <div className="w-50 h-screen">
-        <Minimap />
+        {isLoading ? (
+          <h1>cargando</h1>
+        ) : !hasError ? (
+          data.lat ? (
+            <Minimap lat={data.lat} lon={data.lon} />
+          ) : (
+            <h1>Coordenadas no encontradas</h1>
+          )
+        ) : (
+          <h1>error</h1>
+        )}
       </div>
     </Layout>
   );
