@@ -66,9 +66,9 @@ export function Map() {
   }
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-[85vh]">
       <MapContainer
-        style={{ height: "100vh", width: "100%", zIndex: 1 }}
+        style={{ height: "85vh", width: "100%", zIndex: 1 }}
         key={center.join(",")}
         center={center}
         maxBounds={limites_externos}

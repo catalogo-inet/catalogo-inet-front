@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export function HeaderInet() {
   return (
-    <header className="h-24 bg-[var(--color-blue)]">
+    <header className="h-[15vh] bg-[var(--color-blue)]">
       <div className="mx-auto max-w-5xl flex justify-between px-5 h-full">
         <Image className="w-48 object-contain" src={logoInet} alt="logo inet" />
         <Image
