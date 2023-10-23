@@ -8,6 +8,7 @@ import {
 } from "@/components/ui/accordion";
 import { Layout } from "@/components/Layout";
 import { useFetch } from "@/hooks/useFetch";
+import { Minimap } from "@/components/Minimap";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
@@ -39,6 +40,10 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               })}
           </AccordionItem>
         </Accordion>
+      </div>
+      {/* Contenedor del minimapa. No va acá. */}
+      <div className="w-50 h-screen">
+        <Minimap />
       </div>
     </Layout>
   );
