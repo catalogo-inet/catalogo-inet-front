@@ -1,14 +1,23 @@
 import { HeaderInet } from "./HeaderInet";
 import { FooterInet } from "./FooterInet";
 import { useState } from "react";
-import { SwitchMap } from "./SwitchMap";
 import { Main } from "./Main";
 import { Map } from "./Map";
 import FilterSheet from "./FilterSheet";
 import { FiltersProvider } from "@/context/FiltersProvider";
+import { Switch } from "./ui";
+import { ReactNode } from "react";
 
-export function Layout({ children }) {
+interface Props {
+  children: ReactNode;
+}
+
+export function Layout({ children }: Props) {
   const [showMap, setShowMap] = useState(false);
+
+  const handleToggle = () => {
+    setShowMap(!showMap);
+  };
 
   return (
     <FiltersProvider>
@@ -16,7 +25,7 @@ export function Layout({ children }) {
         <HeaderInet />
         <Main className={showMap ? "" : "pt-10"}>
           <div className="absolute top-0 left-0 px-6 py-5 flex justify-between z-50 w-full">
-            <SwitchMap state={showMap} setState={setShowMap} />
+            <Switch onClick={handleToggle} />
             <FilterSheet />
           </div>
           {!showMap && children}
