@@ -14,9 +14,16 @@ import {
   Label,
   Switch,
 } from "@/components/ui";
+import { useFetch } from "@/hooks/useFetch";
+import { useFilters } from "@/hooks/useFilters";
 import { SvgFiltros } from "../assets/icons/SvgIcons";
 
 export const FilterSheet = () => {
+  const { data, isLoading, hasError } = useFetch(
+    `http://localhost:7000/api/jurisdicciones`
+  );
+  const { profesional, profesionalTrue } = useFilters();
+
   return (
     <Sheet>
       <SheetTrigger asChild>
@@ -25,7 +32,7 @@ export const FilterSheet = () => {
           <Label className="text-black text-sm">Filtros</Label>
         </button>
       </SheetTrigger>
-      <SheetContent className="h-76 bg-white shadow-md text-black z-50">
+      <SheetContent className="h-[90%] bg-white shadow-md text-black z-50">
         <SheetHeader>
           <SheetTitle>Filtros</SheetTitle>
           <SheetDescription>
@@ -61,6 +68,20 @@ export const FilterSheet = () => {
               <AccordionItem value="item-2">
                 <AccordionTrigger>Provincia</AccordionTrigger>
                 <AccordionContent className="flex flex-col items-center">
+                  {!isLoading &&
+                    data.map((item: any) => {
+                      return (
+                        <>
+                          <Switch id={item.Descripcion} />
+                          <Label
+                            htmlFor={item.Descripcion}
+                            className="text-black text-sm"
+                          >
+                            {item.Descripcion}
+                          </Label>
+                        </>
+                      );
+                    })}
                   <Switch id="buenos-aires" />
                   <Label htmlFor="buenos-aires" className="text-black text-sm">
                     Buenos Aires
