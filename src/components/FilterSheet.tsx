@@ -15,12 +15,15 @@ import {
   Switch,
 } from "@/components/ui";
 import { useFetch } from "@/hooks/useFetch";
+import { useFilters } from "@/hooks/useFilters";
 import { SvgFiltros } from "../assets/icons/SvgIcons";
 
 export const FilterSheet = () => {
   const { data, isLoading, hasError } = useFetch(
     `http://localhost:7000/api/jurisdicciones`
   );
+  const { profesional, profesionalTrue } = useFilters();
+
   return (
     <Sheet>
       <SheetTrigger asChild>
