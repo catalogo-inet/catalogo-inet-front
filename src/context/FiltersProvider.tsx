@@ -35,7 +35,6 @@ export const FiltersProvider = ({ children }: Props) => {
   });
   const [popup, setPopup] = useState(false);
 
-<<<<<<< HEAD
   const [intituciones, setIntituciones] = [];
 
   const setFilterProvince = (province: string) => {
@@ -47,33 +46,7 @@ export const FiltersProvider = ({ children }: Props) => {
     <FiltersContext.Provider
       value={{
         setFilterProvince,
-=======
-  const toggleTiposState = (property) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      tiposInstitucion: {
-        ...prevFilters.tiposInstitucion,
-        [property]: !prevFilters.tiposInstitucion[property],
-      },
-    }));
-  };
 
-  const toggleProvinciasState = (property) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      provincias: {
-        ...prevFilters.provincias,
-        [property]: !prevFilters.provincias[property],
-      },
-    }));
-  };
-
-  return (
-    <FiltersContext.Provider
-      value={{
-        toggleProvinciasState,
-        toggleTiposState,
->>>>>>> 2bed118dc90477bca63d5191663328153e2815bc
         filters,
         popup,
         setPopup,
