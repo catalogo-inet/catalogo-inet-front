@@ -2,7 +2,7 @@ import { createContext } from "react";
 
 export interface FiltersState {
   tiposInstitucion: string;
-  codigoPostal: number;
+  codigoPostal: string;
   provincia: string;
 }
 
