@@ -61,7 +61,6 @@ export const FilterSheet = () => {
                           key={i}
                           className="flex w-full justify-start gap-3"
                         >
-                          <Switch id={tipo} />
                           <Label htmlFor={tipo} className="text-black text-sm">
                             {tipo}
                           </Label>
