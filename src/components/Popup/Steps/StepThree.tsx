@@ -1,7 +1,13 @@
 import { Input, Label } from "@/components/ui";
 import React from "react";
+import { useFilters } from "@/hooks/useFilters";
+export const StepThree = () => {
+  const { popup, setPopup } = useFilters();
 
-export const StepThree = ({ setSteps }) => {
+  const handleClick = () => {
+    setPopup(true);
+  };
+
   return (
     <>
       <Label className="text-black font-bold text-2xl mb-5">
@@ -15,7 +21,7 @@ export const StepThree = ({ setSteps }) => {
         />
         <button
           onClick={() => {
-            setSteps(4);
+            handleClick();
           }}
           className="bg-[var(--color-blue)] text-white px-2 py-1 rounded-[5px]"
         >

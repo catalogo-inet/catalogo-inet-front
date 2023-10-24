@@ -11,6 +11,7 @@ import { useFetch } from "@/hooks/useFetch";
 import { Minimap } from "@/components/Minimap";
 import { HandleError } from "@/components/handleError";
 import { HandleLoading } from "@/components/HandleLoading";
+import { FiltersProvider } from "@/context/FiltersProvider";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;

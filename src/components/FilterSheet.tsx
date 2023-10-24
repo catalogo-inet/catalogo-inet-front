@@ -31,8 +31,7 @@ export const FilterSheet = () => {
     `http://localhost:7000/api/jurisdicciones`
   );
 
-  const { filters, setFilterFalse, setFilterTrue, toggleFilterState } =
-    useFilters();
+  const { filters } = useFilters();
 
   return (
     <Sheet>
@@ -77,7 +76,7 @@ export const FilterSheet = () => {
                 <AccordionContent>
                   <div className="flex flex-col items-center max-h-44 overflow-scroll">
                     <HandleError hasError={hasError}>
-                      <HandleLoading>
+                      <HandleLoading isLoading={isLoading}>
                         {data &&
                           data.map((item: any, i: number) => {
                             return (

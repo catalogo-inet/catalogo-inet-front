@@ -7,13 +7,13 @@ export interface FiltersState {
     FP: boolean;
     Superior: boolean;
   };
-  codigoPostal: number | undefined;
-  provincia: string | undefined;
+  codigoPostal: number;
+  provincia: string;
 }
 
 export const FiltersContext = createContext({
+  popup: false,
   filters: {} as FiltersState, // Initialize with an empty FiltersState
-  setFilterTrue: (property) => {}, // Initialize with empty functions
-  toggleFilterState: (property) => {},
-  setFilterFalse: (property) => {},
+  setFilterProvince: (province: string) => {}, // Initialize with empty functions
+  setPopup: (state: boolean) => {},
 });

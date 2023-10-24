@@ -6,6 +6,22 @@ type Props = {
   children: ReactNode;
 };
 
+interface institucion {
+  id: number;
+  nombre: string;
+  fundacion: number;
+  orientaciones: string;
+  direccion: string;
+  localidad: string;
+  codigoPostal: string;
+  descripcion: string;
+  jurisdiccion: string;
+  tipo: string;
+  gestion: string;
+  lat: string;
+  lon: string;
+}
+
 export const FiltersProvider = ({ children }: Props) => {
   const [filters, setFilters] = useState<FiltersState>({
     tiposInstitucion: {
@@ -14,21 +30,25 @@ export const FiltersProvider = ({ children }: Props) => {
       FP: false,
       Superior: false,
     },
-    codigoPostal: undefined,
-    provincia: undefined,
+    codigoPostal: 7000,
+    provincia: "Buenos Aires",
   });
+  const [popup, setPopup] = useState(false);
+
+  const [intituciones, setIntituciones] = [];
 
   const setFilterProvince = (province: string) => {
     setFilters((currentFilters) => {
       return { ...currentFilters, provincia: province };
     });
   };
-
   return (
     <FiltersContext.Provider
       value={{
         setFilterProvince,
         filters,
+        popup,
+        setPopup,
       }}
     >
       {children}
