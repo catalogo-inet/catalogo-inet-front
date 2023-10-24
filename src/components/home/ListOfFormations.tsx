@@ -17,7 +17,6 @@ export function ListOfFormations() {
         <HandleError>
           <HandleLoading>
             {instituciones &&
-              instituciones[0].nombre &&
               instituciones.map((formation, i) => {
                 const {
                   id,

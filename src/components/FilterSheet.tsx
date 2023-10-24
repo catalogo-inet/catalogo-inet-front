@@ -19,7 +19,7 @@ import {
 import { useFetch } from "@/hooks/useFetch";
 import { useFilters } from "@/hooks/useFilters";
 import { SvgFiltros } from "../assets/icons/SvgIcons";
-import { HandleError } from "./handleError";
+import { HandleError } from "./HandleError";
 import { HandleLoading } from "./HandleLoading";
 
 const tiposInstitucion = [
