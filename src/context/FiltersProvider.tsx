@@ -14,7 +14,9 @@ export const FiltersProvider = ({ children }: Props) => {
     provincia: "Buenos Aires",
   });
   const [popup, setPopup] = useState(false);
-  const { instituciones } = useInstituciones({ filters });
+  const { instituciones, instError, instLoading } = useInstituciones({
+    filters,
+  });
 
   const setFilterProvince = (province: string) => {
     setFilters((currentFilters) => {
@@ -28,7 +30,6 @@ export const FiltersProvider = ({ children }: Props) => {
     });
   };
 
-  console.log({ filters, instituciones });
   return (
     <FiltersContext.Provider
       value={{
@@ -38,6 +39,8 @@ export const FiltersProvider = ({ children }: Props) => {
         popup,
         setPopup,
         instituciones,
+        instLoading,
+        instError,
       }}
     >
       {children}
