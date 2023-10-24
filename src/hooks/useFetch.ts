@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = (url: string) => {
+export const useFetch = (url: string, effect) => {
   const [state, setState] = useState<any>({
     data: null,
     isLoading: true,
@@ -32,7 +32,7 @@ export const useFetch = (url: string) => {
   useEffect(() => {
     // Al actualizar URL => disparamos getFech()
     getFetch();
-  }, [url]);
+  }, [url, effect]);
 
   return {
     data: state.data,

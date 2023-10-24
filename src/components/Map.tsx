@@ -1,15 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import {
-  MapContainer,
-  useMapEvents,
-  TileLayer,
-  AttributionControl,
-  ZoomControl,
-  ScaleControl,
-  useMap,
-} from "react-leaflet";
+import { MapContainer, useMapEvents, useMap } from "react-leaflet";
 import { Circle, CircleMarker, Marker, Popup, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
@@ -25,13 +17,6 @@ export function Map() {
   ]);
 
   useEffect(() => {}, [center]);
-
-  // useEffect(() => {
-  //   map.on('zoom', onMove)
-  //   return () => {
-
-  //   }
-  // }, [map, onMove])
 
   function Eventos() {
     const [position, setPosition] = useState(null);

@@ -7,5 +7,5 @@ type Props = {
 
 export function HandleLoading({ children, isLoading }: Props) {
   if (!isLoading) return children;
-  return <h1>Cargando...</h1>;
+  return <h1>cargando...</h1>;
 }

@@ -1,11 +1,13 @@
 import { Input, Label } from "@/components/ui";
-import React from "react";
+import React, { useState } from "react";
 import { useFilters } from "@/hooks/useFilters";
 export const StepThree = () => {
-  const { popup, setPopup } = useFilters();
+  const { popup, setPopup, setFilterCodigoPostal } = useFilters();
+  const [cp, setCp] = useState("");
 
   const handleClick = () => {
     setPopup(true);
+    setFilterCodigoPostal(cp);
   };
 
   return (
@@ -18,6 +20,7 @@ export const StepThree = () => {
           type="number"
           placeholder="Código postal"
           className="rounded-[5px]"
+          onChange={(e) => setCp(e.target.value)}
         />
         <button
           onClick={() => {

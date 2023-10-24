@@ -5,6 +5,7 @@ interface FormationProps {
   id: number;
   city: string;
   name: string;
+  direction: string;
   location: string;
   province: string;
   phone: string;
@@ -15,10 +16,10 @@ export function CardFormation({
   id,
   city,
   name,
-  location,
   province,
   phone,
   email,
+  direction,
 }: FormationProps) {
   return (
     <Link
@@ -31,7 +32,7 @@ export function CardFormation({
         </h2>
       </header>
       <section className="p-5 text-base font-semibold">
-        <p>Dirección: {location}</p>
+        <p>Dirección: {direction}</p>
         <p>Localidad: {city}</p>
         <p>Provincia: {province}</p>
         <p>Telefono: {phone}</p>
