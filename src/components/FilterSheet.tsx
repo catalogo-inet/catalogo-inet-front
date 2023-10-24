@@ -31,11 +31,7 @@ export const FilterSheet = () => {
     `http://localhost:7000/api/jurisdicciones`
   );
 
-<<<<<<< HEAD
   const { filters } = useFilters();
-=======
-  const { filters, toggleTiposState } = useFilters();
->>>>>>> 2bed118dc90477bca63d5191663328153e2815bc
 
   return (
     <Sheet>
