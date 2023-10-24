@@ -1,8 +1,4 @@
 import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
   Sheet,
   SheetClose,
   SheetContent,
@@ -12,7 +8,13 @@ import {
   SheetTitle,
   SheetTrigger,
   Label,
-  Switch,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectGroup,
+  SelectLabel,
+  SelectItem,
+  Select,
 } from "@/components/ui";
 import { useFetch } from "@/hooks/useFetch";
 import { useFilters } from "@/hooks/useFilters";
@@ -50,54 +52,49 @@ export const FilterSheet = () => {
         </SheetHeader>
         <div className="grid gap-4 py-4">
           <div className="grid  items-center gap-4">
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>Tipo de institución</AccordionTrigger>
-                <AccordionContent>
-                  <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center">
+              <Select>
+                <SelectTrigger className=" rounded-[5px]">
+                  <SelectValue placeholder="Orientacion" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  <SelectGroup>
+                    <SelectLabel>Selecciona una orientación</SelectLabel>
                     {tiposInstitucion.map((tipo, i) => {
                       return (
-                        <div
-                          key={i}
-                          className="flex w-full justify-start gap-3"
-                        >
-                          <Label htmlFor={tipo} className="text-black text-sm">
-                            {tipo}
-                          </Label>
-                        </div>
+                        <SelectItem key={i} value={tipo}>
+                          {tipo}
+                        </SelectItem>
                       );
                     })}
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-              <AccordionItem value="item-2">
-                <AccordionTrigger>Provincia</AccordionTrigger>
-                <AccordionContent>
-                  <div className="flex flex-col items-center max-h-44 overflow-scroll">
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="flex flex-col items-center max-h-44 overflow-scroll">
+              <Select>
+                <SelectTrigger className=" rounded-[5px]">
+                  <SelectValue placeholder="Orientacion" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  <SelectGroup>
+                    <SelectLabel>Selecciona una orientación</SelectLabel>
                     <HandleError hasError={hasError}>
                       <HandleLoading isLoading={isLoading}>
                         {data &&
                           data.map((item: any, i: number) => {
                             return (
-                              <div
-                                key={i}
-                                className="w-full flex justify-start gap-3 pl-3"
-                              >
-                                <Label
-                                  htmlFor={item.Descripcion}
-                                  className="text-black text-sm"
-                                >
-                                  {item.Descripcion}
-                                </Label>
-                              </div>
+                              <SelectItem key={i} value={item}>
+                                {item}
+                              </SelectItem>
                             );
                           })}
                       </HandleLoading>
                     </HandleError>
-                  </div>
-                </AccordionContent>
-              </AccordionItem>
-            </Accordion>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
           </div>
         </div>
         <SheetFooter>
