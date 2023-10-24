@@ -1,16 +1,6 @@
 import { SvgPoint } from "@/assets/icons/SvgIcons";
-import json from "../../mocks/intituciones.json";
+import { InstitucionProp } from "@/types";
 import Link from "next/link";
-interface FormationProps {
-  id: number;
-  city: string;
-  name: string;
-  direction: string;
-  location: string;
-  province: string;
-  phone: string;
-  email: string;
-}
 
 export function CardFormation({
   id,
@@ -20,7 +10,7 @@ export function CardFormation({
   phone,
   email,
   direction,
-}: FormationProps) {
+}: InstitucionProp) {
   return (
     <Link
       href={`/institucion/${id}`}
