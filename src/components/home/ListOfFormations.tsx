@@ -4,20 +4,20 @@ import { CardFormation } from "./CardFormation";
 import { useFilters } from "@/hooks/useFilters";
 import { HandleError } from "@/components/HandleError";
 import { HandleLoading } from "@/components/HandleLoading";
-
+import { Institucion } from "@/types";
 export function ListOfFormations() {
   const { instituciones, instLoading, instError } = useFilters();
-  console.log(instituciones);
   return (
     <div>
       <h1 className="text-black text-2xl font-semibold mt-10">
         Formacion profesional
       </h1>
       <div className="flex flex-col gap-7 sm:grid sm:grid-cols-2 sm:justify-between my-5 min-h-screen">
-        <HandleError>
-          <HandleLoading>
+        <HandleError hasError={instError}>
+          <HandleLoading isLoading={instLoading}>
             {instituciones &&
-              instituciones.map((formation, i) => {
+              instituciones[0].nombre &&
+              instituciones.map((institucion: Institucion, i: number) => {
                 const {
                   id,
                   descripcion,
@@ -25,7 +25,7 @@ export function ListOfFormations() {
                   localidad,
                   jurisdiccion,
                   direccion,
-                } = formation;
+                } = institucion;
                 return (
                   <CardFormation
                     key={i}

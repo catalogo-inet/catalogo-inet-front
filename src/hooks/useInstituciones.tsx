@@ -1,26 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
 import { useFetch } from "./useFetch";
-interface institucion {
-  id: number;
-  nombre: string;
-  fundacion: number;
-  orientaciones: string;
-  direccion: string;
-  localidad: string;
-  codigoPostal: string;
-  descripcion: string;
-  jurisdiccion: string;
-  tipo: string;
-  gestion: string;
-  lat: string;
-  lon: string;
+import instituciones from "@/mocks/intituciones.json";
+interface Props {
+  filters: {
+    tiposInstitucion: string;
+    codigoPostal: string;
+    provincia: string;
+  };
 }
 
-export function useInstituciones({ filters }) {
-  const { data, isLoading, hasError } = useFetch(
-    `http://localhost:7000/api/instituciones?codigoPostal=${filters.codigoPostal}`,
-    filters
-  );
-  return { instituciones: data, instLoading: isLoading, instError: hasError };
+export function useInstituciones({ filters }: Props) {
+  return { instituciones, instLoading: false, instError: false };
 }
