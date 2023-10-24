@@ -17,6 +17,8 @@ import {
 import { useFetch } from "@/hooks/useFetch";
 import { useFilters } from "@/hooks/useFilters";
 import { SvgFiltros } from "../assets/icons/SvgIcons";
+import { HandleError } from "./handleError";
+import { HandleLoading } from "./HandleLoading";
 
 const tiposInstitucion = [
   "Secundaria",
@@ -29,7 +31,7 @@ export const FilterSheet = () => {
     `http://localhost:7000/api/jurisdicciones`
   );
 
-  const { filters, toggleTiposState } = useFilters();
+  const { filters } = useFilters();
 
   return (
     <Sheet>
@@ -73,29 +75,27 @@ export const FilterSheet = () => {
                 <AccordionTrigger>Provincia</AccordionTrigger>
                 <AccordionContent>
                   <div className="flex flex-col items-center max-h-44 overflow-scroll">
-                    {!isLoading &&
-                      data.map((item: any, i: number) => {
-                        return (
-                          <div
-                            key={i}
-                            className="w-full flex justify-start gap-3 pl-3"
-                          >
-                            <Switch id={item.Descripcion} />
-                            <Label
-                              htmlFor={item.Descripcion}
-                              className="text-black text-sm"
-                            >
-                              {item.Descripcion}
-                            </Label>
-                          </div>
-                        );
-                      })}
+                    <HandleError hasError={hasError}>
+                      <HandleLoading isLoading={isLoading}>
+                        {data &&
+                          data.map((item: any, i: number) => {
+                            return (
+                              <div
+                                key={i}
+                                className="w-full flex justify-start gap-3 pl-3"
+                              >
+                                <Label
+                                  htmlFor={item.Descripcion}
+                                  className="text-black text-sm"
+                                >
+                                  {item.Descripcion}
+                                </Label>
+                              </div>
+                            );
+                          })}
+                      </HandleLoading>
+                    </HandleError>
                   </div>
-
-                  <Switch id="buenos-aires" />
-                  <Label htmlFor="buenos-aires" className="text-black text-sm">
-                    Buenos Aires
-                  </Label>
                 </AccordionContent>
               </AccordionItem>
             </Accordion>

@@ -22,8 +22,7 @@ export const StepOne = ({ setSteps }) => {
           setSteps={setSteps}
         />
         <CardEstablishment
-          title="Formación Profesional
-"
+          title="Formación Profesional"
           image={formacionProfesional}
           setSteps={setSteps}
         />

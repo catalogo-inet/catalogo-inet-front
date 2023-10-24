@@ -1,72 +1,58 @@
 import { useState } from "react";
 import { FiltersState, FiltersContext } from "@/context/FiltersContext";
+import { ReactNode } from "react";
 
-export const FiltersProvider = (props) => {
+type Props = {
+  children: ReactNode;
+};
+
+interface institucion {
+  id: number;
+  nombre: string;
+  fundacion: number;
+  orientaciones: string;
+  direccion: string;
+  localidad: string;
+  codigoPostal: string;
+  descripcion: string;
+  jurisdiccion: string;
+  tipo: string;
+  gestion: string;
+  lat: string;
+  lon: string;
+}
+
+export const FiltersProvider = ({ children }: Props) => {
   const [filters, setFilters] = useState<FiltersState>({
     tiposInstitucion: {
-      SecundariaTecnica: true,
-      EPS: true,
-      FP: true,
-      Superior: true,
+      SecundariaTecnica: false,
+      EPS: false,
+      FP: false,
+      Superior: false,
     },
     codigoPostal: 7000,
-    provincias: {
-      ciudadBuenosAires: false,
-      buenosAires: false,
-      catamarca: false,
-      chaco: false,
-      chubut: false,
-      cordoba: false,
-      corrientes: false,
-      entreRios: false,
-      formosa: false,
-      jujuy: false,
-      laPampa: false,
-      laRioja: false,
-      mendoza: false,
-      misiones: false,
-      neuquen: false,
-      rioNegro: false,
-      salta: false,
-      sanJuan: false,
-      sanLuis: false,
-      santaCruz: false,
-      santaFe: false,
-      santiagoDelEstero: false,
-      tucuman: false,
-      tierraDelFuego: false,
-    },
+    provincia: "Buenos Aires",
   });
+  const [popup, setPopup] = useState(false);
 
-  const toggleTiposState = (property) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      tiposInstitucion: {
-        ...prevFilters.tiposInstitucion,
-        [property]: !prevFilters.tiposInstitucion[property],
-      },
-    }));
+  const [intituciones, setIntituciones] = [];
+
+  const setFilterProvince = (province: string) => {
+    setFilters((currentFilters) => {
+      return { ...currentFilters, provincia: province };
+    });
   };
-
-  const toggleProvinciasState = (property) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
-      provincias: {
-        ...prevFilters.provincias,
-        [property]: !prevFilters.provincias[property],
-      },
-    }));
-  };
-
   return (
     <FiltersContext.Provider
       value={{
-        toggleProvinciasState,
-        toggleTiposState,
+        setFilterProvince,
+
         filters,
+        popup,
+        setPopup,
       }}
     >
-      {props.children}
+      {children}
     </FiltersContext.Provider>
   );
 };
