@@ -1,6 +1,7 @@
 "use client";
 
 import { CardFormation } from "./CardFormation";
+import { useFilters } from "@/hooks/useFilters";
 
 const list = [
   {
@@ -42,6 +43,8 @@ const list = [
 ];
 
 export function ListOfFormations() {
+  const { filters } = useFilters();
+  console.log(filters);
   return (
     <div>
       <h1 className="text-black text-2xl font-semibold mt-10">
