@@ -33,13 +33,19 @@ export const FilterSheet = () => {
   //   `http://localhost:7000/api/jurisdicciones`,
   //   tiposInstitucion
   // );
-  const { setFilterProvince } = useFilters();
-  const [provincia, setProvincia] = useState("Buenos Aires");
+  const { filters, setFilterProvince, setFilterTipoInstitucion } = useFilters();
+  const [provincia, setProvincia] = useState(filters.provincia);
+  const [tipo, setTipo] = useState(filters.tipoInstitucion);
   const handleSelectChange = (provincia: string) => {
     setProvincia(provincia);
   };
 
+  const handleTipoChange = (value: string) => {
+    setTipo(value);
+  };
+
   const handleSubmit = () => {
+    setFilterTipoInstitucion(tipo);
     setFilterProvince(provincia);
   };
 
@@ -64,7 +70,7 @@ export const FilterSheet = () => {
               <Label className="text-black font-bold text-xl mb-5">
                 Tipo de institucion
               </Label>
-              <Select>
+              <Select onValueChange={(e) => handleTipoChange(e)}>
                 <SelectTrigger className=" rounded-[5px]">
                   <SelectValue placeholder="Orientacion" />
                 </SelectTrigger>

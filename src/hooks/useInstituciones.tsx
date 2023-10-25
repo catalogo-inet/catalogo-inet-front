@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from "react";
-import { useFetch } from "./useFetch";
 import mockInstituciones from "@/mocks/intituciones.json";
 interface Props {
   filters: {
