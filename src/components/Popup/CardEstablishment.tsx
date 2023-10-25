@@ -12,7 +12,7 @@ export function CardEstablishment({ setSteps, image, title }: Props) {
       onClick={() => {
         setSteps(2);
       }}
-      className="rounded-xl overflow-hidden flex-1 bg-[var(--color-blue)] cursor-pointer hover:scale-105"
+      className="rounded-xl overflow-hidden flex-1 h-full bg-[var(--color-blue)] cursor-pointer hover:scale-105"
     >
       <div className="relative h-40">
         <Image

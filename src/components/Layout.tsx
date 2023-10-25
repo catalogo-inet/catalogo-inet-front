@@ -16,6 +16,7 @@ interface Props {
 
 export function Layout({ children }: Props) {
   const [showMap, setShowMap] = useState(true);
+  const [url, setUrl] = useState("");
 
   const handleToggle = () => {
     setShowMap(!showMap);
