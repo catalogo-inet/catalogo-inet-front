@@ -7,25 +7,35 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Layout } from "@/components/Layout";
-import { useFetch } from "@/hooks/useFetch";
 import { Minimap } from "@/components/Minimap";
-import { HandleError } from "@/components/handleError";
+import { HandleError } from "@/components/HandleError";
 import { HandleLoading } from "@/components/HandleLoading";
-import { FiltersProvider } from "@/context/FiltersProvider";
+import { useFilters } from "@/hooks/useFilters";
+import { geocodeDireccion } from "@/lib/getCoordenates";
+import { useEffect, useState } from "react";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
-  const { data, isLoading, hasError } = useFetch(
-    `http://localhost:7000/api/instituciones/${idInstitucion}`
-  );
+  const { instituciones, instError, instLoading } = useFilters();
+  const [filterIntitucion] = instituciones.filter((i) => i.id == idInstitucion);
+  const arrayOrientaciones = filterIntitucion?.orientaciones.split(",");
+  const [coordenates, setCoordenates] = useState<
+    { lat: number; lon: number } | {}
+  >({});
 
-  const arrayOrientaciones = data?.orientaciones.split(",");
-
+  useEffect(() => {
+    const { direccion, codigoPostal } = filterIntitucion;
+    geocodeDireccion({ direccion, codigoPostal }).then((data) => {
+      const { lat, lon } = data;
+      setCoordenates({ lat, lon });
+    });
+  }, [filterIntitucion]);
+  console.log(coordenates);
   return (
     <Layout>
       <div className="mt-10">
         <h1 className="text-black text-4xl mt-10 font-bold">
-          {data && data.Nombre}
+          {filterIntitucion && filterIntitucion.nombre}
         </h1>
         <h2 className="mt-2 text-xl text-[var(--color-blue)]">
           Carreras disponibles
@@ -33,7 +43,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>Orientaciones</AccordionTrigger>
-            {data &&
+            {instituciones &&
               arrayOrientaciones.map((orientacion: string, i: number) => {
                 return (
                   <AccordionContent key={i}>{orientacion}</AccordionContent>
@@ -43,10 +53,10 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
         </Accordion>
       </div>
       <div className="w-50 h-screen">
-        <HandleError hasError={hasError}>
-          <HandleLoading isLoading={isLoading}>
-            {data && data.lat ? (
-              <Minimap lat={data.lat} lon={data.lon} />
+        <HandleError hasError={instError}>
+          <HandleLoading isLoading={instLoading}>
+            {coordenates && coordenates.lat ? (
+              <Minimap lat={coordenates.lat} lon={coordenates.lon} />
             ) : (
               <h1>Coordenadas no encontradas</h1>
             )}

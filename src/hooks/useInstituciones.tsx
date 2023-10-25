@@ -10,5 +10,12 @@ interface Props {
 }
 
 export function useInstituciones({ filters }: Props) {
-  return { instituciones, instLoading: false, instError: false };
+  const filterInstituciones = instituciones.filter(
+    (i) => i.tipo == filters.tiposInstitucion
+  );
+  return {
+    instituciones: filterInstituciones,
+    instLoading: false,
+    instError: false,
+  };
 }
