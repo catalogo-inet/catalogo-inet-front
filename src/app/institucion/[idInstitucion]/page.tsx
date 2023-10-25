@@ -18,7 +18,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
   const { instituciones, instError, instLoading } = useFilters();
   const [filterIntitucion] = instituciones.filter((i) => i.id == idInstitucion);
-  const arrayOrientaciones = filterIntitucion?.orientaciones.split(",");
+  const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
   const [coordenates, setCoordenates] = useState<
     { lat: number; lon: number } | {}
   >({});
@@ -30,7 +30,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
       setCoordenates({ lat, lon });
     });
   }, [filterIntitucion]);
-  console.log(coordenates);
+  console.log(instituciones);
   return (
     <Layout>
       <div className="mt-10">

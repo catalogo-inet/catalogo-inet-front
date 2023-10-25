@@ -9,7 +9,7 @@ type Props = {
 
 export const FiltersProvider = ({ children }: Props) => {
   const [filters, setFilters] = useState<FiltersState>({
-    tiposInstitucion: "secundaria",
+    tipoInstitucion: "Superior Tecnico",
     codigoPostal: "900",
     provincia: "Buenos Aires",
   });
@@ -30,11 +30,19 @@ export const FiltersProvider = ({ children }: Props) => {
     });
   };
 
+  const setFilterTipoInstitucion = (tipoInstitucion: string) => {
+    setFilters((currentFilters) => {
+      return { ...currentFilters, tipoInstitucion: tipoInstitucion };
+    });
+  };
+  console.log({ filters, instituciones });
+
   return (
     <FiltersContext.Provider
       value={{
         setFilterProvince,
         setFilterCodigoPostal,
+        setFilterTipoInstitucion,
         filters,
         popup,
         setPopup,

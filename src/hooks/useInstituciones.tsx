@@ -1,6 +1,7 @@
 "use client";
+import { useEffect, useState } from "react";
 import { useFetch } from "./useFetch";
-import instituciones from "@/mocks/intituciones.json";
+import mockInstituciones from "@/mocks/intituciones.json";
 interface Props {
   filters: {
     tiposInstitucion: string;
@@ -10,11 +11,15 @@ interface Props {
 }
 
 export function useInstituciones({ filters }: Props) {
-  const filterInstituciones = instituciones.filter(
-    (i) => i.tipo == filters.tiposInstitucion
-  );
+  const [instituciones, setInstituciones] = useState();
+  useEffect(() => {
+    const filterInstituciones = mockInstituciones.filter(
+      (i) => i.tipo == filters.tipoInstitucion
+    );
+    setInstituciones(filterInstituciones);
+  }, [filters]);
   return {
-    instituciones: filterInstituciones,
+    instituciones,
     instLoading: false,
     instError: false,
   };
