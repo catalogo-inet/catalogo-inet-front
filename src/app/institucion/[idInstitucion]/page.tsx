@@ -20,18 +20,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   if (!instituciones) window.location = "../";
   const [filterIntitucion] = instituciones.filter((i) => i.id == idInstitucion);
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
-  const [coordenates, setCoordenates] = useState<
-    { lat: number; lon: number } | {}
-  >({});
 
-  useEffect(() => {
-    const { direccion, codigoPostal, jurisdiccion } = filterIntitucion;
-    geocodeDireccion({ direccion, codigoPostal, jurisdiccion }).then((data) => {
-      const { lat, lon } = data;
-      setCoordenates({ lat, lon });
-    });
-  }, [filterIntitucion]);
-  console.log(instituciones);
   return (
     <Layout>
       <div className="mt-10">
@@ -56,8 +45,8 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
       <div className="w-50 h-screen">
         <HandleError hasError={instError}>
           <HandleLoading isLoading={instLoading}>
-            {coordenates && coordenates.lat ? (
-              <Minimap lat={coordenates.lat} lon={coordenates.lon} />
+            {filterIntitucion && filterIntitucion.lat ? (
+              <Minimap lat={filterIntitucion.lat} lon={filterIntitucion.lon} />
             ) : (
               <h1>Coordenadas no encontradas</h1>
             )}
