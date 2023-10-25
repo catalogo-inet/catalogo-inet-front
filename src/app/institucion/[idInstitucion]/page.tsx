@@ -22,7 +22,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
 
   return (
-    <Layout>
+    <div>
       <div className="mt-10">
         <h1 className="text-black text-4xl mt-10 font-bold">
           {filterIntitucion && filterIntitucion.nombre}
@@ -53,7 +53,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
           </HandleLoading>
         </HandleError>
       </div>
-    </Layout>
+    </div>
   );
 };
 

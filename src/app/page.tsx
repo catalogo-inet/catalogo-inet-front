@@ -1,14 +1,9 @@
 "use client";
 
 import { ListOfFormations } from "@/components/home/ListOfFormations";
-import { Layout } from "@/components/Layout";
 
 const Home = () => {
-  return (
-    <Layout>
-      <ListOfFormations />
-    </Layout>
-  );
+  return <ListOfFormations />;
 };
 
 export default Home;
