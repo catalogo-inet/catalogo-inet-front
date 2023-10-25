@@ -7,6 +7,10 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Capas, customIcon } from "@/components/mapComponents/Capas";
 import { Controladores } from "@/components/mapComponents/Controladores";
+import { useFilters } from "@/hooks/useFilters";
+import mockJurisdicciones from "@/mocks/jurisdicciones.json";
+
+
 
 export function Map() {
   const extremo_noroeste = [-20, -80];
@@ -15,21 +19,40 @@ export function Map() {
   const [center, setCenter] = useState<LatLngExpression>([
     -37.32167, -59.13316,
   ]);
+  const [provinciaActual, setProvincia] = useState();
+  const { filters } = useFilters();
+  
+  useEffect(() => {
+    const filterProvincia = mockJurisdicciones.filter(
+      (i) => i.nombre == filters.provincia
+    );
+    setProvincia(filterProvincia);
+}, [filters]);
+
+  function Effectos(){
+    const map = useMap();
+    
+    console.log(provinciaActual);
+    let coords = provinciaActual[0].coords;
+    console.log(coords);
+    useEffect(() => { map.flyTo(coords, 7) }, [provinciaActual]);
+
+}
 
   useEffect(() => {}, [center]);
 
   function Eventos() {
     const [position, setPosition] = useState(null);
     const mapEvts = useMapEvents({
+
       locationfound(e) {
         setPosition(e.latlng);
-        mapEvts.flyTo(e.latlng, 8);
+        mapEvts.flyTo(position, 8);
       },
     });
   }
 
   function Localize() {
-    const map = useMap();
     map.locate(); // Se usa para pedir la ubicacion y centrar el mapa ahi.
   }
 
@@ -48,15 +71,16 @@ export function Map() {
         scrollWheelZoom={false}
         touchZoom={center}
       >
-        <Localize />
-
+        <Effectos />
         {/* Controles UI */}
         <Controladores />
 
         {/* CAPAS y control de capas */}
         <Capas />
 
-        <Eventos />
+        {/* <Localize /> */}
+        {/* <Eventos /> */}
+        
       </MapContainer>
     </div>
   );
