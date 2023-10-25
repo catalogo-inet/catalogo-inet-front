@@ -10,6 +10,7 @@ export function CardFormation({
   phone,
   email,
   direction,
+  tipo,
 }: InstitucionProp) {
   return (
     <Link
@@ -30,7 +31,7 @@ export function CardFormation({
       </section>
       <footer className="p-5 flex justify-between items-center gap-4 w-full">
         <button className="bg-white text-[var(--color-blue)] rounded-full py-1 px-2">
-          Secundario tecnico
+          {tipo}
         </button>
         <SvgPoint />
       </footer>

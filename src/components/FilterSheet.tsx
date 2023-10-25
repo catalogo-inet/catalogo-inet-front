@@ -17,8 +17,10 @@ import {
   Select,
   Input,
 } from "@/components/ui";
-import { useFetch } from "@/hooks/useFetch";
+import mockJurisdicciones from "@/mocks/jurisdicciones.json";
 import { SvgFiltros } from "../assets/icons/SvgIcons";
+import { useFilters } from "@/hooks/useFilters";
+import { useState } from "react";
 
 const tiposInstitucion = [
   "Secundaria",
@@ -31,6 +33,15 @@ export const FilterSheet = () => {
   //   `http://localhost:7000/api/jurisdicciones`,
   //   tiposInstitucion
   // );
+  const { setFilterProvince } = useFilters();
+  const [provincia, setProvincia] = useState("Buenos Aires");
+  const handleSelectChange = (provincia: string) => {
+    setProvincia(provincia);
+  };
+
+  const handleSubmit = () => {
+    setFilterProvince(provincia);
+  };
 
   return (
     <Sheet>
@@ -60,9 +71,7 @@ export const FilterSheet = () => {
                 <SelectContent className="bg-white">
                   <SelectGroup>
                     <SelectLabel>Selecciona una orientación</SelectLabel>
-                    <SelectItem value="secundaria">
-                      Secundaria
-                    </SelectItem>
+                    <SelectItem value="secundaria">Secundaria</SelectItem>
                     <SelectItem value="tecnicatura-superior">
                       Tecnicatura superior
                     </SelectItem>
@@ -81,24 +90,30 @@ export const FilterSheet = () => {
               </Select>
             </div>
             <div className="flex flex-col">
-              <div className="flex flex-col mt-5 space-y-4 max-w-xs">
-                <Label className="text-black font-bold text-xl mb-5">
-                  Codigo Postal
-                </Label>
-                <Input
-                  type="number"
-                  placeholder="Código postal"
-                  className="rounded-[5px]"
-                  value="7000"
-                />
-              </div>
+              <Select onValueChange={(e) => handleSelectChange(e)}>
+                <SelectTrigger className=" rounded-[5px]">
+                  <SelectValue placeholder="Provincia" />
+                </SelectTrigger>
+                <SelectContent className="bg-white">
+                  <SelectGroup>
+                    <SelectLabel>Selecciona una provincia</SelectLabel>
+                    {mockJurisdicciones.map((item, i) => {
+                      return (
+                        <SelectItem key={i} value={item.nombre}>
+                          {item.nombre}
+                        </SelectItem>
+                      );
+                    })}
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
             </div>
           </div>
         </div>
         <SheetFooter>
           <SheetClose asChild>
             <button
-              type="submit"
+              onClick={handleSubmit}
               className="bg-[var(--color-blue)] text-white px-2 py-1 rounded-[5px]"
             >
               Guardar cambios

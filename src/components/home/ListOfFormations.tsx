@@ -24,6 +24,7 @@ export function ListOfFormations() {
                   localidad,
                   jurisdiccion,
                   direccion,
+                  tipo,
                 } = institucion;
                 return (
                   <CardFormation
@@ -34,6 +35,7 @@ export function ListOfFormations() {
                     direction={direccion}
                     location={localidad}
                     province={jurisdiccion}
+                    tipo={tipo}
                     email="escuela@gmail.com"
                     phone="+54 2494377662"
                   />

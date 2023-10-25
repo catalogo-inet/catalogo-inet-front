@@ -7,6 +7,7 @@ export interface InstitucionProp {
   province: string;
   phone: string;
   email: string;
+  tipo: string;
 }
 
 export interface FiltersState {

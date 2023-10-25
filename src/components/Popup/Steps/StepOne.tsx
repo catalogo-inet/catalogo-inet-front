@@ -25,14 +25,14 @@ export const StepOne = ({ setSteps }) => {
         </div>
         <div onClick={() => handleClick("Secundario Segundo Ciclo")}>
           <CardEstablishment
-            title="Tecnicatura Superior"
+            title="Secundario Segundo Ciclo"
             image={tecnicaSuperior}
             setSteps={setSteps}
           />
         </div>
         <div onClick={() => handleClick("Superior Tecnico")}>
           <CardEstablishment
-            title="Formación Profesional"
+            title="Superior Tecnico"
             image={formacionProfesional}
             setSteps={setSteps}
           />

@@ -15,12 +15,16 @@ import React, { useState } from "react";
 import { useFilters } from "@/hooks/useFilters";
 export const StepThree = () => {
   const { popup, setPopup, setFilterProvince } = useFilters();
-  const [provincia, setProv] = useState("Argentina");
+  const [provincia, setProvincia] = useState("Buenos Aires");
+
+  const handleSelectChange = (provincia: string) => {
+    setProvincia(provincia);
+  };
 
   const handleClick = () => {
     setPopup(true);
     setFilterProvince(provincia);
-    console.log(provincia)
+    console.log(provincia);
   };
 
   return (
@@ -29,20 +33,20 @@ export const StepThree = () => {
         ¿En que provincia querés buscar?
       </Label>
       <div className="flex flex-col mt-5 space-y-4 max-w-xs">
-        <Select>
+        <Select onValueChange={(e) => handleSelectChange(e)}>
           <SelectTrigger className=" rounded-[5px]">
             <SelectValue placeholder="Provincia" />
           </SelectTrigger>
           <SelectContent className="bg-white">
             <SelectGroup>
               <SelectLabel>Selecciona una provincia</SelectLabel>
-              {
-              mockJurisdicciones.map((item, i) => {
+              {mockJurisdicciones.map((item, i) => {
                 return (
-                  <SelectItem value={item.nombre}>{item.nombre}</SelectItem>
+                  <SelectItem key={i} value={item.nombre}>
+                    {item.nombre}
+                  </SelectItem>
                 );
-              })
-              }
+              })}
             </SelectGroup>
           </SelectContent>
         </Select>
