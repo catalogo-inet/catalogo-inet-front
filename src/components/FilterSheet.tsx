@@ -15,6 +15,7 @@ import {
   SelectLabel,
   SelectItem,
   Select,
+  ScrollArea,
   Input,
 } from "@/components/ui";
 import mockJurisdicciones from "@/mocks/jurisdicciones.json";
@@ -72,11 +73,11 @@ export const FilterSheet = () => {
               </Label>
               <Select onValueChange={(e) => handleTipoChange(e)}>
                 <SelectTrigger className=" rounded-[5px]">
-                  <SelectValue placeholder="Orientacion" />
+                  <SelectValue placeholder="Tipo de institución" />
                 </SelectTrigger>
                 <SelectContent className="bg-white">
                   <SelectGroup>
-                    <SelectLabel>Selecciona una orientación</SelectLabel>
+                    <SelectLabel>Selecciona tipo de institución</SelectLabel>
                     <SelectItem value="secundaria">Secundaria</SelectItem>
                     <SelectItem value="tecnicatura-superior">
                       Tecnicatura superior
@@ -100,16 +101,18 @@ export const FilterSheet = () => {
                 <SelectTrigger className=" rounded-[5px]">
                   <SelectValue placeholder="Provincia" />
                 </SelectTrigger>
-                <SelectContent className="bg-white">
+                <SelectContent className="bg-white overflow-y-auto max-h-[15rem]">
                   <SelectGroup>
                     <SelectLabel>Selecciona una provincia</SelectLabel>
-                    {mockJurisdicciones.map((item, i) => {
-                      return (
-                        <SelectItem key={i} value={item.nombre}>
-                          {item.nombre}
-                        </SelectItem>
-                      );
-                    })}
+                    <ScrollArea>
+                      {mockJurisdicciones.map((item, i) => {
+                        return (
+                          <SelectItem key={i} value={item.nombre}>
+                            {item.nombre}
+                          </SelectItem>
+                        );
+                      })}
+                    </ScrollArea>
                   </SelectGroup>
                 </SelectContent>
               </Select>
