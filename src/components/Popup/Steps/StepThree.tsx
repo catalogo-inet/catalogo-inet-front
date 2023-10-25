@@ -7,6 +7,7 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
+  ScrollArea,
 } from "@/components/ui";
 
 import mockJurisdicciones from "@/mocks/jurisdicciones.json";
@@ -34,12 +35,13 @@ export const StepThree = () => {
       </Label>
       <div className="flex flex-col mt-5 space-y-4 max-w-xs">
         <Select onValueChange={(e) => handleSelectChange(e)}>
-          <SelectTrigger className=" rounded-[5px]">
+          <SelectTrigger className="rounded-[5px]">
             <SelectValue placeholder="Provincia" />
           </SelectTrigger>
-          <SelectContent className="bg-white">
+          <SelectContent className="bg-white overflow-y-auto max-h-[15rem]">
             <SelectGroup>
               <SelectLabel>Selecciona una provincia</SelectLabel>
+
               {mockJurisdicciones.map((item, i) => {
                 return (
                   <SelectItem key={i} value={item.nombre}>

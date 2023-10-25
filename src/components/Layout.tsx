@@ -6,7 +6,7 @@ import { useState, useEffect } from "react";
 import { Main } from "./Main";
 import { Map } from "./Map";
 import FilterSheet from "./FilterSheet";
-import { Switch } from "./ui";
+import { Label, Switch } from "./ui";
 import { ReactNode } from "react";
 import { useFilters } from "@/hooks/useFilters";
 import { Popup } from "@/components/Popup/Popup";
@@ -15,7 +15,7 @@ interface Props {
 }
 
 export function Layout({ children }: Props) {
-  const [showMap, setShowMap] = useState(false);
+  const [showMap, setShowMap] = useState(true);
 
   const handleToggle = () => {
     setShowMap(!showMap);
@@ -33,7 +33,22 @@ export function Layout({ children }: Props) {
       <HeaderInet />
       <Main className={showMap ? "" : "pt-10"}>
         <div className="absolute top-0 left-0 px-6 py-5 flex justify-between z-40 w-full">
-          <Switch onClick={handleToggle} />
+          <div className="bg-white rounded-full py-1 px-2 flex items-center gap-2">
+            <div
+              className={`${
+                showMap ? "bg-blue-400" : "bg-gray-300"
+              } rounded-full flex items-center shadow-md`}
+            >
+              <Switch
+                id="activar-mapa"
+                onClick={handleToggle}
+                checked={showMap}
+              />
+            </div>
+            <Label htmlFor="activar-mapa" className="text-black text-sm">
+              Mapa
+            </Label>
+          </div>
           <FilterSheet />
         </div>
         {!showMap && children}
