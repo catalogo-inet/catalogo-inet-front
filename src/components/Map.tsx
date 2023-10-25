@@ -31,7 +31,7 @@ export function Map() {
 
   function Effectos(){
     const map = useMap();
-    
+    if (!provinciaActual) return
     console.log(provinciaActual);
     let coords = provinciaActual[0].coords;
     console.log(coords);
