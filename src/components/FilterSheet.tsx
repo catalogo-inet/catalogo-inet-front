@@ -27,10 +27,10 @@ const tiposInstitucion = [
 ];
 
 export const FilterSheet = () => {
-  const { data, isLoading, hasError } = useFetch(
-    `http://localhost:7000/api/jurisdicciones`,
-    tiposInstitucion
-  );
+  // const { data, isLoading, hasError } = useFetch(
+  //   `http://localhost:7000/api/jurisdicciones`,
+  //   tiposInstitucion
+  // );
 
   return (
     <Sheet>
@@ -60,7 +60,9 @@ export const FilterSheet = () => {
                 <SelectContent className="bg-white">
                   <SelectGroup>
                     <SelectLabel>Selecciona una orientación</SelectLabel>
-                    <SelectItem value="secundaria">Secundaria</SelectItem>
+                    <SelectItem value="secundaria">
+                      Secundaria
+                    </SelectItem>
                     <SelectItem value="tecnicatura-superior">
                       Tecnicatura superior
                     </SelectItem>

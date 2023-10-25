@@ -56,10 +56,6 @@ export function Map() {
         {/* CAPAS y control de capas */}
         <Capas />
 
-        <Marker position={center} icon={customIcon}>
-          <Popup>AQUÍ PUEDES COLOCAR TU CONTENIDO DE MARCADOR</Popup>
-        </Marker>
-
         <Eventos />
       </MapContainer>
     </div>

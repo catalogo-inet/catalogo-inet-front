@@ -1,27 +1,51 @@
-import { Input, Label } from "@/components/ui";
+import {
+  Label,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui";
+
+import mockJurisdicciones from "@/mocks/jurisdicciones.json";
+
 import React, { useState } from "react";
 import { useFilters } from "@/hooks/useFilters";
 export const StepThree = () => {
-  const { popup, setPopup, setFilterCodigoPostal } = useFilters();
-  const [cp, setCp] = useState("");
+  const { popup, setPopup, setFilterProvince } = useFilters();
+  const [provincia, setProv] = useState("Argentina");
 
   const handleClick = () => {
     setPopup(true);
-    setFilterCodigoPostal(cp);
+    setFilterProvince(provincia);
+    console.log(provincia)
   };
 
   return (
     <>
       <Label className="text-black font-bold text-2xl mb-5">
-        Por favor, da acceso a tu ubicación o ingresa tu código postal
+        ¿En que provincia querés buscar?
       </Label>
       <div className="flex flex-col mt-5 space-y-4 max-w-xs">
-        <Input
-          type="number"
-          placeholder="Código postal"
-          className="rounded-[5px]"
-          onChange={(e) => setCp(e.target.value)}
-        />
+        <Select>
+          <SelectTrigger className=" rounded-[5px]">
+            <SelectValue placeholder="Provincia" />
+          </SelectTrigger>
+          <SelectContent className="bg-white">
+            <SelectGroup>
+              <SelectLabel>Selecciona una provincia</SelectLabel>
+              {
+              mockJurisdicciones.map((item, i) => {
+                return (
+                  <SelectItem value={item.nombre}>{item.nombre}</SelectItem>
+                );
+              })
+              }
+            </SelectGroup>
+          </SelectContent>
+        </Select>
         <button
           onClick={() => {
             handleClick();

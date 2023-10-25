@@ -17,6 +17,7 @@ import { useEffect, useState } from "react";
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
   const { instituciones, instError, instLoading } = useFilters();
+  if (!instituciones) window.location = "../";
   const [filterIntitucion] = instituciones.filter((i) => i.id == idInstitucion);
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
   const [coordenates, setCoordenates] = useState<
@@ -24,8 +25,8 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   >({});
 
   useEffect(() => {
-    const { direccion, codigoPostal } = filterIntitucion;
-    geocodeDireccion({ direccion, codigoPostal }).then((data) => {
+    const { direccion, codigoPostal, jurisdiccion } = filterIntitucion;
+    geocodeDireccion({ direccion, codigoPostal, jurisdiccion }).then((data) => {
       const { lat, lon } = data;
       setCoordenates({ lat, lon });
     });

@@ -10,18 +10,19 @@ export async function geocodeDireccion({
   jurisdiccion,
 }: Props) {
   console.log({ direccion, codigoPostal });
-  const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${direccion}, ${codigoPostal}, Argentina`;
+  const apiUrl = `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${direccion}, ${jurisdiccion}, ${codigoPostal}, Argentina`;
   let result = {};
   try {
     const response = await fetch(apiUrl);
     if (response.ok) {
+      console.log(response);
       const data = await response.json();
       if (data.length > 0) {
         const locationData = data[0];
         result = locationData;
       } else {
         console.log(
-          `No se encontraron resultados para ${direccion}, ${codigoPostal}.`
+          `No se encontraron resultados para ${apiUrl}.`
         );
       }
     } else {
