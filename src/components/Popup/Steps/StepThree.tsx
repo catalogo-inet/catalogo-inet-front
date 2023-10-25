@@ -42,7 +42,7 @@ export const StepThree = () => {
             <SelectGroup>
               <SelectLabel>Selecciona una provincia</SelectLabel>
 
-              {mockJurisdicciones.map((item, i) => {
+              {mockJurisdicciones.map((item, i: number) => {
                 return (
                   <SelectItem key={i} value={item.nombre}>
                     {item.nombre}

@@ -9,6 +9,20 @@ import {
   SelectValue,
 } from "@/components/ui";
 
+const orientaciones = [
+"Técnico Mecánico",
+"Panadero",
+"Operador de Sistemas de Animación Computarizada",
+"Técnico en Programación",
+"Maestro Mayor de Obras",
+"Técnico en Electrónica",
+"Técnico Superior en Diseño Gráfico",
+"Técnico Superior Ilustrador Profesional",
+"Pastelero",
+"Operador Básico de PC",
+"Montador Electricista Domiciliario"
+]
+
 export const StepTwo = ({ setSteps }) => {
   return (
     <>
@@ -20,11 +34,16 @@ export const StepTwo = ({ setSteps }) => {
           <SelectTrigger className=" rounded-[5px]">
             <SelectValue placeholder="Orientacion" />
           </SelectTrigger>
-          <SelectContent className="bg-white">
+          <SelectContent className="bg-white overflow-y-auto max-h-[15rem]">
             <SelectGroup>
               <SelectLabel>Selecciona una orientación</SelectLabel>
-              <SelectItem value="apple">Programación</SelectItem>
-              <SelectItem value="banana">Informática</SelectItem>
+              {
+                orientaciones.map((item, i: number) => {
+                  return (
+                    <SelectItem key={i} value={item}>{item}</SelectItem>
+                  );
+                })
+              }
             </SelectGroup>
           </SelectContent>
         </Select>
