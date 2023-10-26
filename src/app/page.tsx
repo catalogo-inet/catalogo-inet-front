@@ -5,7 +5,7 @@ import { ListOfFormations } from "@/components/home/ListOfFormations";
 import { Label, Switch } from "@/components/ui";
 import { useState } from "react";
 const Home = () => {
-  const [showMap, setShowMap] = useState(second);
+  const [showMap, setShowMap] = useState(true);
 
   const handleToggle = () => {
     setShowMap(!showMap);
