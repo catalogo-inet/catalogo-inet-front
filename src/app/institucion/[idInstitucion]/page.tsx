@@ -16,7 +16,6 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
   const { instituciones, instError, instLoading } = useFilters();
@@ -51,17 +50,18 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               })}
           </AccordionItem>
         </Accordion>
-
       </div>
       <div className="w-50 h-screen">
         <HandleError hasError={instError}>
           <HandleLoading isLoading={instLoading}>
             {filterIntitucion && filterIntitucion.lat ? (
-              <Minimap lat={filterIntitucion.lat} lon={filterIntitucion.lon} />
+              <Minimap
+                lat={parseInt(filterIntitucion.lat)}
+                lon={parseInt(filterIntitucion.lon)}
+              />
             ) : (
               <h1>Coordenadas no encontradas</h1>
             )}
-
           </HandleLoading>
         </HandleError>
       </div>
