@@ -14,11 +14,13 @@ import { useFilters } from "@/hooks/useFilters";
 import { geocodeDireccion } from "@/lib/getCoordenates";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
+
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
   const { instituciones, instError, instLoading } = useFilters();
-  if (!instituciones) window.location = "../";
+  if (!instituciones) redirect("/");
   const [filterIntitucion] = instituciones.filter((i) => i.id == idInstitucion);
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
 
