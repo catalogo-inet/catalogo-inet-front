@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect } from "react";
 import { MapContainer, useMapEvents, useMap } from "react-leaflet";
-import { Circle, CircleMarker, Marker, Popup, Tooltip } from "react-leaflet";
 import L from "leaflet";
 import "leaflet/dist/leaflet.css";
-import { Capas, customIcon } from "@/components/mapComponents/Capas";
+import { Capas } from "@/components/mapComponents/Capas";
 import { Controladores } from "@/components/mapComponents/Controladores";
 import { useFilters } from "@/hooks/useFilters";
 import mockJurisdicciones from "@/mocks/jurisdicciones.json";
@@ -15,7 +14,9 @@ export function Map() {
   const extremo_sureste = [-90, -20];
   const limites_externos = L.latLngBounds(extremo_noroeste, extremo_sureste);
   const [center, setCenter] = useState([-37.32167, -59.13316]);
-  const [provinciaActual, setProvincia] = useState();
+  const [provinciaActual, setProvincia] = useState<
+    { nombre: string; coords: number[] }[]
+  >([]);
   const { filters } = useFilters();
 
   useEffect(() => {
@@ -24,8 +25,6 @@ export function Map() {
     );
     setProvincia(filterProvincia);
   }, [filters]);
-
-  useEffect(() => {}, [center]);
 
   function Eventos() {
     const [position, setPosition] = useState(null);
