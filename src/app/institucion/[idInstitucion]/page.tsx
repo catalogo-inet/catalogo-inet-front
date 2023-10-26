@@ -41,6 +41,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               })}
           </AccordionItem>
         </Accordion>
+
       </div>
       <div className="w-50 h-screen">
         <HandleError hasError={instError}>
@@ -50,6 +51,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
             ) : (
               <h1>Coordenadas no encontradas</h1>
             )}
+
           </HandleLoading>
         </HandleError>
       </div>
