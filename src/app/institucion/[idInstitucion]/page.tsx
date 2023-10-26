@@ -31,10 +31,26 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
           </Link>
         </div>
       </div>
-      <div className="">
-        <h1 className="text-black text-4xl mt-10 font-bold">
-          {filterIntitucion && filterIntitucion.nombre}
-        </h1>
+      <div className="flex flex-col">
+        <div className="flex justify-between items-start mt-5">
+          <h1 className="text-black text-4xl mt-10 font-bold">
+            {filterIntitucion && filterIntitucion.nombre}
+          </h1>
+          <div className="w-60 h-60">
+            <HandleError hasError={instError}>
+              <HandleLoading isLoading={instLoading}>
+                {filterIntitucion && filterIntitucion.lat ? (
+                  <Minimap
+                    lat={filterIntitucion.lat}
+                    lon={filterIntitucion.lon}
+                  />
+                ) : (
+                  <h1>Coordenadas no encontradas</h1>
+                )}
+              </HandleLoading>
+            </HandleError>
+          </div>
+        </div>
         <h2 className="mt-2 text-xl text-[var(--color-blue)]">
           Carreras disponibles
         </h2>
@@ -49,17 +65,8 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               })}
           </AccordionItem>
         </Accordion>
-      </div>
-      <div className="w-50 h-screen">
-        <HandleError hasError={instError}>
-          <HandleLoading isLoading={instLoading}>
-            {filterIntitucion && filterIntitucion.lat ? (
-              <Minimap lat={filterIntitucion.lat} lon={filterIntitucion.lon} />
-            ) : (
-              <h1>Coordenadas no encontradas</h1>
-            )}
-          </HandleLoading>
-        </HandleError>
+        <p>escucela@gmail.com</p>
+        <p>+54 249438742</p>
       </div>
     </div>
   );
