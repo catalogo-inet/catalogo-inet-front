@@ -3,9 +3,9 @@
 import FilterSheet from "@/components/FilterSheet";
 import { ListOfFormations } from "@/components/home/ListOfFormations";
 import { Label, Switch } from "@/components/ui";
-import { useFilters } from "@/hooks/useFilters";
+import { useState } from "react";
 const Home = () => {
-  const { showMap, setShowMap } = useFilters();
+  const [showMap, setShowMap] = useState(second);
 
   const handleToggle = () => {
     setShowMap(!showMap);
