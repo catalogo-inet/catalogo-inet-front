@@ -13,6 +13,7 @@ import { HandleLoading } from "@/components/HandleLoading";
 import { useFilters } from "@/hooks/useFilters";
 import { geocodeDireccion } from "@/lib/getCoordenates";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
@@ -22,8 +23,15 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
 
   return (
-    <div>
-      <div className="mt-10">
+    <div className="flex flex-col">
+      <div className="pl-2">
+        <div className="w-10 h-10 flex justify-center items-center rounded-full shadow-md hover:scale-105">
+          <Link href="/" className="text-lg font-bold">
+            ←
+          </Link>
+        </div>
+      </div>
+      <div className="">
         <h1 className="text-black text-4xl mt-10 font-bold">
           {filterIntitucion && filterIntitucion.nombre}
         </h1>
