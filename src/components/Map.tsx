@@ -14,9 +14,7 @@ export function Map() {
   const extremo_noroeste = [-20, -80];
   const extremo_sureste = [-90, -20];
   const limites_externos = L.latLngBounds(extremo_noroeste, extremo_sureste);
-  const [center, setCenter] = useState<LatLngExpression>([
-    -37.32167, -59.13316,
-  ]);
+  const [center, setCenter] = useState([-37.32167, -59.13316]);
   const [provinciaActual, setProvincia] = useState();
   const { filters } = useFilters();
 
