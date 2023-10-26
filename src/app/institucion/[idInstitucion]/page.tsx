@@ -24,8 +24,12 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
 
   return (
     <div className="flex flex-col">
-      <div className="p-5">
-        <Link href="/">Atras</Link>
+      <div className="pl-2">
+        <div className="w-10 h-10 flex justify-center items-center rounded-full shadow-md hover:scale-105">
+          <Link href="/" className="text-lg font-bold">
+            ←
+          </Link>
+        </div>
       </div>
       <div className="">
         <h1 className="text-black text-4xl mt-10 font-bold">
