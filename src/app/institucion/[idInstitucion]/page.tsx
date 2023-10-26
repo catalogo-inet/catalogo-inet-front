@@ -14,11 +14,12 @@ import { useFilters } from "@/hooks/useFilters";
 import { geocodeDireccion } from "@/lib/getCoordenates";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
   const { instituciones, instError, instLoading } = useFilters();
-  if (!instituciones) window.location = "../";
+  if (!instituciones) redirect("/");
   const [filterIntitucion] = instituciones.filter((i) => i.id == idInstitucion);
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
 
@@ -65,8 +66,25 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               })}
           </AccordionItem>
         </Accordion>
+<<<<<<< HEAD
         <p>escucela@gmail.com</p>
         <p>+54 249438742</p>
+=======
+      </div>
+      <div className="w-50 h-screen">
+        <HandleError hasError={instError}>
+          <HandleLoading isLoading={instLoading}>
+            {filterIntitucion && filterIntitucion.lat ? (
+              <Minimap
+                lat={parseInt(filterIntitucion.lat)}
+                lon={parseInt(filterIntitucion.lon)}
+              />
+            ) : (
+              <h1>Coordenadas no encontradas</h1>
+            )}
+          </HandleLoading>
+        </HandleError>
+>>>>>>> e23ba6b2cffdd1cc298a4914e1a2e1c6d7fe8997
       </div>
     </div>
   );

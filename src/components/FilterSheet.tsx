@@ -36,7 +36,7 @@ export const FilterSheet = () => {
   // );
   const { filters, setFilterProvince, setFilterTipoInstitucion } = useFilters();
   const [provincia, setProvincia] = useState(filters.provincia);
-  const [tipo, setTipo] = useState(filters.tipoInstitucion);
+  const [tipo, setTipo] = useState(filters.tiposInstitucion);
   const handleSelectChange = (provincia: string) => {
     setProvincia(provincia);
   };
@@ -78,20 +78,15 @@ export const FilterSheet = () => {
                 <SelectContent className="bg-white">
                   <SelectGroup>
                     <SelectLabel>Selecciona tipo de institución</SelectLabel>
-                    <SelectItem value="secundaria">Secundaria</SelectItem>
-                    <SelectItem value="tecnicatura-superior">
+                    <SelectItem value="Secundario Tecnico">
+                      Secundario Técnico
+                    </SelectItem>
+                    <SelectItem value="Superior Tecnico">
                       Tecnicatura superior
                     </SelectItem>
-                    <SelectItem value="formacion-superior">
+                    <SelectItem value="Formacion Profesional">
                       Formacion superior
                     </SelectItem>
-                    {/*{tiposInstitucion.map((tipo, i) => {
-                      return (
-                        <SelectItem key={i} value="tipo">
-                          {tipo}
-                        </SelectItem>
-                      );
-                    })}*/}
                   </SelectGroup>
                 </SelectContent>
               </Select>

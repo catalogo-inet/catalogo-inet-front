@@ -17,28 +17,28 @@ export const StepOne = ({ setSteps }) => {
       </Label>
       <div className="flex flex-col md:flex-row gap-6 md:gap-3 md:space-y-0 w-full">
         <div
-          onClick={() => handleClick("Secundario Primer Ciclo")}
+          onClick={() => handleClick("Secundario Técnico")}
           className="flex-1"
         >
           <CardEstablishment
-            title="Secundario Primer Ciclo"
+            title="Secundario Técnico"
             image={secundaria}
             setSteps={setSteps}
           />
         </div>
         <div
-          onClick={() => handleClick("Secundario Segundo Ciclo")}
+          onClick={() => handleClick("Formacion Profesional")}
           className="flex-1"
         >
           <CardEstablishment
-            title="Secundario Segundo Ciclo"
+            title="Formación Profesional"
             image={tecnicaSuperior}
             setSteps={setSteps}
           />
         </div>
         <div onClick={() => handleClick("Superior Tecnico")} className="flex-1">
           <CardEstablishment
-            title="Superior Tecnico"
+            title="Superior Técnico"
             image={formacionProfesional}
             setSteps={setSteps}
           />

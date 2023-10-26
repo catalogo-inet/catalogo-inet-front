@@ -4,6 +4,7 @@ import FilterSheet from "@/components/FilterSheet";
 import { ListOfFormations } from "@/components/home/ListOfFormations";
 import { Label, Switch } from "@/components/ui";
 import { useFilters } from "@/hooks/useFilters";
+
 const Home = () => {
   const { showMap, setShowMap } = useFilters();
 

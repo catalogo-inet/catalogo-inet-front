@@ -10,12 +10,11 @@ import { useState, useEffect } from "react";
 import { useFetch } from "@/hooks/useFetch";
 import { GetServerSideProps } from "next";
 import { useFilters } from "@/hooks/useFilters";
-import { Link } from "lucide-react";
 import L from "leaflet"
 import { HandleError } from "@/components/HandleError";
 import { HandleLoading } from "@/components/HandleLoading";
 import { Institucion } from "@/types";
-
+import Link from "next/link";
 export const customIcon = L.icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149060.png",
   iconSize: [32, 32],
@@ -70,9 +69,9 @@ export function Capas() {
                   <Marker key={i} position={L.latLng(institucion.lat, institucion.lon)} icon={customIcon}>
                     <Popup>
                       {institucion.nombre + " - "}
-                      <a href={`/institucion/${institucion.id}`} className="cursor-pointer">
+                      <Link href={`/institucion/${institucion.id}`} className="cursor-pointer">
                         Ver más
-                      </a>
+                      </Link>
                     </Popup>
                   </Marker>
                 );
