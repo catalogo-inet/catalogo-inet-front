@@ -17,6 +17,7 @@ export const FiltersProvider = ({ children }: Props) => {
   const { instituciones, instError, instLoading } = useInstituciones({
     filters,
   });
+  const [showMap, setShowMap] = useState(true);
 
   const setFilterProvince = (province: string) => {
     setFilters((currentFilters) => {
@@ -49,6 +50,8 @@ export const FiltersProvider = ({ children }: Props) => {
         instituciones,
         instLoading,
         instError,
+        showMap,
+        setShowMap,
       }}
     >
       {children}
