@@ -36,7 +36,7 @@ export const FilterSheet = () => {
   // );
   const { filters, setFilterProvince, setFilterTipoInstitucion } = useFilters();
   const [provincia, setProvincia] = useState(filters.provincia);
-  const [tipo, setTipo] = useState(filters.tipoInstitucion);
+  const [tipo, setTipo] = useState(filters.tiposInstitucion);
   const handleSelectChange = (provincia: string) => {
     setProvincia(provincia);
   };
@@ -79,7 +79,7 @@ export const FilterSheet = () => {
                   <SelectGroup>
                     <SelectLabel>Selecciona tipo de institución</SelectLabel>
                     <SelectItem value="Secundario Tecnico">
-                    Secundario Técnico
+                      Secundario Técnico
                     </SelectItem>
                     <SelectItem value="Superior Tecnico">
                       Tecnicatura superior
