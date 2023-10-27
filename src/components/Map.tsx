@@ -49,7 +49,7 @@ export function Map() {
         zoomControl={false}
         attributionControl={false}
         scrollWheelZoom={false}
-        touchZoom={false}
+        touchZoom={true}
       >
         {/* Controles UI */}
         <Controladores />
