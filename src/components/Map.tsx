@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, useMapEvents, useMap } from "react-leaflet";
-import L from "leaflet";
+import L, { LatLngExpression, latLng } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Capas } from "@/components/mapComponents/Capas";
 import { Controladores } from "@/components/mapComponents/Controladores";
@@ -20,14 +20,17 @@ function Eventos() {
 }
 
 export function Map() {
-  const extremo_noroeste = [-20, -80];
-  const extremo_sureste = [-90, -20];
+  const extremo_noroeste: [number, number] = [-20, -80];
+  const extremo_sureste: [number, number] = [-90, -20];
   const limites_externos = L.latLngBounds(extremo_noroeste, extremo_sureste);
-  const [center, setCenter] = useState([-37.32167, -59.13316]);
+  const [center, setCenter] = useState<LatLngExpression>([
+    -37.32167, -59.13316,
+  ]);
   const [provinciaActual, setProvincia] = useState<
     { nombre: string; coords: number[] }[]
   >([]);
   const { filters } = useFilters();
+  let centerKey = `${center[0]},${center[1]}`;
 
   useEffect(() => {
     const filterProvincia = mockJurisdicciones.filter(
@@ -40,7 +43,7 @@ export function Map() {
     <div className="w-full h-[85vh]">
       <MapContainer
         style={{ height: "85vh", width: "100%", zIndex: 1 }}
-        key={center.join(",")}
+        key={centerKey}
         center={center}
         maxBounds={limites_externos}
         minZoom={4}

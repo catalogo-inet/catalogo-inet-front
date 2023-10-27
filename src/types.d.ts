@@ -11,7 +11,7 @@ export interface InstitucionProp {
 }
 
 export interface FiltersState {
-  tiposInstitucion: string;
+  tipoInstitucion: string;
   codigoPostal: string;
   provincia: string;
 }
@@ -28,6 +28,6 @@ export interface Institucion {
   jurisdiccion: string;
   tipo: string;
   gestion: string;
-  lat: string;
-  lon: string;
+  lat?: string;
+  lon?: string;
 }

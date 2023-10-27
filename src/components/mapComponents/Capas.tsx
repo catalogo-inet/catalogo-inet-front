@@ -10,7 +10,7 @@ import { useState, useEffect } from "react";
 import { useFetch } from "@/hooks/useFetch";
 import { GetServerSideProps } from "next";
 import { useFilters } from "@/hooks/useFilters";
-import L from "leaflet"
+import L from "leaflet";
 import { HandleError } from "@/components/HandleError";
 import { HandleLoading } from "@/components/HandleLoading";
 import { Institucion } from "@/types";
@@ -24,7 +24,6 @@ export const customIcon = L.icon({
 
 export function Capas() {
   const { instituciones, instError, instLoading } = useFilters();
-
 
   return (
     <>
@@ -62,21 +61,29 @@ export function Capas() {
         <LayerGroup>
           <HandleError hasError={instError}>
             <HandleLoading isLoading={instLoading}>
-
-            {instituciones &&
-              instituciones.map((institucion: Institucion, i: number) => {
-                return (
-                  <Marker key={i} position={L.latLng(institucion.lat, institucion.lon)} icon={customIcon}>
-                    <Popup>
-                      {institucion.nombre + " - "}
-                      <Link href={`/institucion/${institucion.id}`} className="cursor-pointer">
-                        Ver más
-                      </Link>
-                    </Popup>
-                  </Marker>
-                );
-              })
-            }
+              {instituciones &&
+                instituciones.map((institucion: Institucion, i: number) => {
+                  return (
+                    <Marker
+                      key={i}
+                      position={L.latLng(
+                        parseInt(institucion.lat),
+                        parseInt(institucion.lon)
+                      )}
+                      icon={customIcon}
+                    >
+                      <Popup>
+                        {institucion.nombre + " - "}
+                        <Link
+                          href={`/institucion/${institucion.id}`}
+                          className="cursor-pointer"
+                        >
+                          Ver más
+                        </Link>
+                      </Popup>
+                    </Marker>
+                  );
+                })}
             </HandleLoading>
           </HandleError>
         </LayerGroup>

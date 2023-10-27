@@ -1,16 +1,10 @@
 "use client";
 import { useEffect, useState } from "react";
 import mockInstituciones from "@/mocks/intituciones.json";
-interface Props {
-  filters: {
-    tiposInstitucion: string;
-    codigoPostal: string;
-    provincia: string;
-  };
-}
+import { FiltersState } from "@/types";
 
-export function useInstituciones({ filters }: Props) {
-  const [instituciones, setInstituciones] = useState();
+export function useInstituciones(filters: FiltersState) {
+  const [instituciones, setInstituciones] = useState<FiltersState[]>();
   useEffect(() => {
     const sortedInstituciones = mockInstituciones.slice(); // Clonar el array para no modificar el original
 
@@ -31,10 +25,10 @@ export function useInstituciones({ filters }: Props) {
         return 0;
       }
     });
-    const filterInstitucions = sortedInstituciones.filter(
+    const filterInstituciones = sortedInstituciones.filter(
       (i) => i.tipo == filters.tipoInstitucion
     );
-    setInstituciones(filterInstitucions);
+    setInstituciones(filterInstituciones);
   }, [filters]);
   return {
     instituciones,

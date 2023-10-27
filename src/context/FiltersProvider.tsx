@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { FiltersState, FiltersContext } from "@/context/FiltersContext";
+import { FiltersContext } from "@/context/FiltersContext";
+import { FiltersState } from "@/types";
 import { ReactNode } from "react";
 import { useInstituciones } from "@/hooks/useInstituciones";
 
@@ -15,7 +16,7 @@ export const FiltersProvider = ({ children }: Props) => {
   });
   const [popup, setPopup] = useState(false);
   const { instituciones, instError, instLoading } = useInstituciones({
-    filters,
+    ...filters,
   });
   const [showMap, setShowMap] = useState(true);
 
@@ -36,7 +37,6 @@ export const FiltersProvider = ({ children }: Props) => {
       return { ...currentFilters, tipoInstitucion: tipoInstitucion };
     });
   };
-  console.log({ filters, instituciones });
 
   return (
     <FiltersContext.Provider
