@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState, useEffect } from "react";
 import { MapContainer, useMapEvents, useMap } from "react-leaflet";
 import L from "leaflet";
@@ -8,6 +6,18 @@ import { Capas } from "@/components/mapComponents/Capas";
 import { Controladores } from "@/components/mapComponents/Controladores";
 import { useFilters } from "@/hooks/useFilters";
 import mockJurisdicciones from "@/mocks/jurisdicciones.json";
+
+function Eventos() {
+  const [position, setPosition] = useState(null);
+  const map = useMap();
+  const mapEvts = useMapEvents({
+    locationfound(e) {
+      setPosition(e.latlng);
+      map.flyTo(position, 8);
+    },
+  });
+  return null;
+}
 
 export function Map() {
   const extremo_noroeste = [-20, -80];
@@ -25,30 +35,6 @@ export function Map() {
     );
     setProvincia(filterProvincia);
   }, [filters]);
-
-  function Eventos() {
-    const [position, setPosition] = useState(null);
-    const mapEvts = useMapEvents({
-      locationfound(e) {
-        setPosition(e.latlng);
-        mapEvts.flyTo(position, 8);
-      },
-    });
-  }
-
-  const map = useMap();
-
-  useEffect(() => {
-    if (!provinciaActual) return;
-    console.log(provinciaActual);
-    let coords = provinciaActual[0].coords;
-    console.log(coords);
-    map.flyTo(coords, 7);
-  }, [provinciaActual, map]);
-
-  function Localize() {
-    map.locate(); // Se usa para pedir la ubicacion y centrar el mapa ahi.
-  }
 
   return (
     <div className="w-full h-[85vh]">
@@ -71,8 +57,8 @@ export function Map() {
         {/* CAPAS y control de capas */}
         <Capas />
 
-        {/* <Localize /> */}
-        {/* <Eventos /> */}
+        {/* Eventos */}
+        <Eventos />
       </MapContainer>
     </div>
   );

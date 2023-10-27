@@ -42,8 +42,8 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               <HandleLoading isLoading={instLoading}>
                 {filterIntitucion && filterIntitucion.lat ? (
                   <Minimap
-                    lat={filterIntitucion.lat}
-                    lon={filterIntitucion.lon}
+                    lat={parseInt(filterIntitucion.lat)}
+                    lon={parseInt(filterIntitucion.lon)}
                   />
                 ) : (
                   <h1>Coordenadas no encontradas</h1>
@@ -66,25 +66,8 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               })}
           </AccordionItem>
         </Accordion>
-<<<<<<< HEAD
         <p>escucela@gmail.com</p>
         <p>+54 249438742</p>
-=======
-      </div>
-      <div className="w-50 h-screen">
-        <HandleError hasError={instError}>
-          <HandleLoading isLoading={instLoading}>
-            {filterIntitucion && filterIntitucion.lat ? (
-              <Minimap
-                lat={parseInt(filterIntitucion.lat)}
-                lon={parseInt(filterIntitucion.lon)}
-              />
-            ) : (
-              <h1>Coordenadas no encontradas</h1>
-            )}
-          </HandleLoading>
-        </HandleError>
->>>>>>> e23ba6b2cffdd1cc298a4914e1a2e1c6d7fe8997
       </div>
     </div>
   );
