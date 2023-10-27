@@ -39,8 +39,8 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
               <HandleLoading isLoading={instLoading}>
                 {filterIntitucion && filterIntitucion.lat ? (
                   <Minimap
-                    lat={filterIntitucion.lat}
-                    lon={filterIntitucion.lon}
+                    lat={parseInt(filterIntitucion.lat)}
+                    lon={parseInt(filterIntitucion.lon)}
                   />
                 ) : (
                   <h1>Coordenadas no encontradas</h1>

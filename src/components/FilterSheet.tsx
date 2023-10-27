@@ -36,7 +36,7 @@ export const FilterSheet = () => {
   // );
   const { filters, setFilterProvince, setFilterTipoInstitucion } = useFilters();
   const [provincia, setProvincia] = useState(filters.provincia);
-  const [tipo, setTipo] = useState(filters.tiposInstitucion);
+  const [tipo, setTipo] = useState(filters.tipoInstitucion);
   const handleSelectChange = (provincia: string) => {
     setProvincia(provincia);
   };

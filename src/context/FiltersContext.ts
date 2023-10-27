@@ -4,7 +4,7 @@ import { Institucion } from "@/types";
 export const FiltersContext = createContext({
   showMap: true,
   popup: false,
-  instituciones: [] as Institucion[],
+  instituciones: [],
   instError: false,
   instLoading: false,
   filters: {} as FiltersState, // Initialize with an empty FiltersState
