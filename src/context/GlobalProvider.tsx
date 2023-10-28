@@ -11,11 +11,7 @@ type Props = {
 
 export const GlobalProvider = ({ children }: Props) => {
   const [popup, setPopup] = useState(false);
-  const { instituciones, instError, instLoading } = useInstituciones({
-    tipoInstitucion: "Superior Tecnico",
-    codigoPostal: "7000",
-    provincia: "Buenos Aires",
-  });
+  const { instituciones, instError, instLoading } = useInstituciones();
   const [showMap, setShowMap] = useState(true);
 
   return (

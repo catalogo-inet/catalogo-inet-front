@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 
 export const useFetch = (url: string, effect) => {
   const [state, setState] = useState<any>({
@@ -7,7 +7,7 @@ export const useFetch = (url: string, effect) => {
     hasError: null,
   });
 
-  const getFetch = async () => {
+  const getFetch = useCallback(async () => {
     try {
       setState({
         ...state,
@@ -27,12 +27,12 @@ export const useFetch = (url: string, effect) => {
         hasError: err,
       });
     }
-  };
+  }, [url, state]);
 
   useEffect(() => {
     // Al actualizar URL => disparamos getFech()
     getFetch();
-  }, [url, effect]);
+  }, [url, effect, getFetch]);
 
   return {
     data: state.data,

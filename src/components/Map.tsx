@@ -6,7 +6,7 @@ interface CordenateProvince {
 
 import React, { useState, useEffect } from "react";
 import { MapContainer, useMapEvents, useMap } from "react-leaflet";
-import L, { LatLngExpression, latLng } from "leaflet";
+import L, { LatLngExpression } from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Capas } from "@/components/mapComponents/Capas";
 import { Controladores } from "@/components/mapComponents/Controladores";

@@ -7,12 +7,12 @@ import {
   Marker,
   Popup,
 } from "react-leaflet";
-import { useFilters } from "@/hooks/useFilters";
 import L from "leaflet";
 import { HandleError } from "@/components/HandleError";
 import { HandleLoading } from "@/components/HandleLoading";
 import { Institucion } from "@/types";
 import Link from "next/link";
+import { useGlobalContext } from "@/hooks/useGlobalContext";
 export const customIcon = L.icon({
   iconUrl: "https://cdn-icons-png.flaticon.com/512/149/149060.png",
   iconSize: [32, 32],
@@ -21,7 +21,7 @@ export const customIcon = L.icon({
 });
 
 export function Capas() {
-  const { instituciones, instError, instLoading } = useFilters();
+  const { instituciones, instError, instLoading } = useGlobalContext();
 
   return (
     <>

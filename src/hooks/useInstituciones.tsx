@@ -1,12 +1,13 @@
 "use client";
 import { useEffect, useState } from "react";
 import mockInstituciones from "@/mocks/intituciones.json";
-import { FiltersState } from "@/types";
 import { Institucion } from "@/types";
+import { useFilters } from "./useFilters";
 
-export function useInstituciones(filters: FiltersState) {
+export function useInstituciones() {
+  const { filters } = useFilters();
   const [instituciones, setInstituciones] = useState<Institucion[]>();
-
+  console.log({ filters, instituciones });
   useEffect(() => {
     const sortedInstituciones = mockInstituciones.slice();
 
@@ -30,7 +31,6 @@ export function useInstituciones(filters: FiltersState) {
       (i) => i.tipo === filters.tipoInstitucion
     );
 
-    // Actualiza el estado con las instituciones filtradas
     setInstituciones(filterInstituciones);
   }, [filters]);
 

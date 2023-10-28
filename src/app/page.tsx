@@ -3,10 +3,10 @@
 import FilterSheet from "@/components/FilterSheet";
 import { ListOfFormations } from "@/components/home/ListOfFormations";
 import { Label, Switch } from "@/components/ui";
-import { useFilters } from "@/hooks/useFilters";
+import { useGlobalContext } from "@/hooks/useGlobalContext";
 
 const Home = () => {
-  const { instituciones, showMap, setShowMap } = useFilters();
+  const { showMap, setShowMap } = useGlobalContext();
   const handleToggle = () => {
     setShowMap(!showMap);
   };

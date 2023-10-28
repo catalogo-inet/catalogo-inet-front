@@ -15,7 +15,6 @@ interface Props {
 
 export function Layout({ children }: Props) {
   const { popup, showMap } = useGlobalContext();
-  console.log(popup);
 
   return (
     <>
@@ -27,7 +26,7 @@ export function Layout({ children }: Props) {
         {!popup && <Popup />}
         <HeaderInet />
         <Main className={showMap ? "" : "pt-10"}>{children}</Main>
-        <div className={showMap ? "flex" : "hidden"}>
+        <div className={`min-h-[85vh] ${showMap ? "flex" : "hidden"}`}>
           <Map />
         </div>
         <FooterInet />
