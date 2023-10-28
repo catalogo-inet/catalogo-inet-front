@@ -2,34 +2,38 @@
 import { useEffect, useState } from "react";
 import mockInstituciones from "@/mocks/intituciones.json";
 import { FiltersState } from "@/types";
+import { Institucion } from "@/types";
 
 export function useInstituciones(filters: FiltersState) {
-  const [instituciones, setInstituciones] = useState<FiltersState[]>();
+  const [instituciones, setInstituciones] = useState<Institucion[]>();
+
   useEffect(() => {
-    const sortedInstituciones = mockInstituciones.slice(); // Clonar el array para no modificar el original
+    const sortedInstituciones = mockInstituciones.slice();
 
     sortedInstituciones.sort((a, b) => {
       if (
         a.jurisdiccion === filters.provincia &&
         b.jurisdiccion !== filters.provincia
       ) {
-        return -1; // a viene antes que b
+        return -1;
       } else if (
         a.jurisdiccion !== filters.provincia &&
         b.jurisdiccion === filters.provincia
       ) {
-        return 1; // b viene antes que a
+        return 1;
       } else {
-        // Si ambas tienen la misma jurisdicción, comparamos por tipo o cualquier otro criterio de ordenamiento
-        // En este ejemplo, no se especifica un segundo criterio, por lo que si la jurisdicción es igual, no se cambia el orden de a y b
         return 0;
       }
     });
+
     const filterInstituciones = sortedInstituciones.filter(
-      (i) => i.tipo == filters.tipoInstitucion
+      (i) => i.tipo === filters.tipoInstitucion
     );
+
+    // Actualiza el estado con las instituciones filtradas
     setInstituciones(filterInstituciones);
   }, [filters]);
+
   return {
     instituciones,
     instLoading: false,

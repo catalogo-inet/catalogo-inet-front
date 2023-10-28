@@ -1,8 +1,8 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 
 interface Props {
   setSteps: (number: number) => void;
-  image: string;
+  image: StaticImageData;
   title: string;
 }
 
@@ -19,6 +19,7 @@ export function CardEstablishment({ setSteps, image, title }: Props) {
           src={image}
           className="absolute w-full h-full object-cover z-0"
           alt="imagen tecnicatura superio"
+          priority
         />
         <div className="bg-[#00000033] absolute w-full h-full z-30"></div>
       </div>

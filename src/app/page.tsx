@@ -6,8 +6,7 @@ import { Label, Switch } from "@/components/ui";
 import { useFilters } from "@/hooks/useFilters";
 
 const Home = () => {
-  const { showMap, setShowMap } = useFilters();
-
+  const { instituciones, showMap, setShowMap } = useFilters();
   const handleToggle = () => {
     setShowMap(!showMap);
   };

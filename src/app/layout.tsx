@@ -1,9 +1,10 @@
 "use client";
-import { FiltersProvider } from "@/context/FiltersProvider";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { Layout } from "@/components/Layout";
+import { GlobalProvider } from "@/context/GlobalProvider";
+import { FiltersProvider } from "@/context/FiltersProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <FiltersProvider>
-        <body className={inter.className}>
-          <Layout>{children}</Layout>
-        </body>
-      </FiltersProvider>
+      <GlobalProvider>
+        <FiltersProvider>
+          <body className={inter.className}>
+            <Layout>{children}</Layout>
+          </body>
+        </FiltersProvider>
+      </GlobalProvider>
     </html>
   );
 }

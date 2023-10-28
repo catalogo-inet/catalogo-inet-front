@@ -19,7 +19,7 @@ export interface FiltersState {
 export interface Institucion {
   id: number;
   nombre: string;
-  fundacion: string;
+  fundacion: number;
   orientaciones: string;
   direccion: string;
   localidad: string;
@@ -28,6 +28,6 @@ export interface Institucion {
   jurisdiccion: string;
   tipo: string;
   gestion: string;
-  lat?: string;
-  lon?: string;
+  lat: string;
+  lon: string;
 }

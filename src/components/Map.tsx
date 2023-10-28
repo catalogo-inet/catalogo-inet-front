@@ -25,7 +25,7 @@ function Eventos() {
   return null;
 }
 
-export function Map() {
+export default function Map() {
   const extremo_noroeste: [number, number] = [-20, -80];
   const extremo_sureste: [number, number] = [-90, -20];
   const limites_externos = L.latLngBounds(extremo_noroeste, extremo_sureste);

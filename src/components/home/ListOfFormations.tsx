@@ -1,12 +1,13 @@
 "use client";
 
 import { CardFormation } from "./CardFormation";
-import { useFilters } from "@/hooks/useFilters";
 import { HandleError } from "@/components/HandleError";
 import { HandleLoading } from "@/components/HandleLoading";
 import { Institucion } from "@/types";
+import { useGlobalContext } from "@/hooks/useGlobalContext";
+
 export function ListOfFormations() {
-  const { instituciones, instLoading, instError } = useFilters();
+  const { instituciones, instLoading, instError } = useGlobalContext();
   return (
     <div>
       <h1 className="text-black text-2xl font-semibold mt-10">

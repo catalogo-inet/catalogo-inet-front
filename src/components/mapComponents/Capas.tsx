@@ -1,14 +1,12 @@
+"use client";
+
 import {
   LayerGroup,
   TileLayer,
   LayersControl,
-  Circle,
   Marker,
   Popup,
 } from "react-leaflet";
-import { useState, useEffect } from "react";
-import { useFetch } from "@/hooks/useFetch";
-import { GetServerSideProps } from "next";
 import { useFilters } from "@/hooks/useFilters";
 import L from "leaflet";
 import { HandleError } from "@/components/HandleError";

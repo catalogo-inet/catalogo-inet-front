@@ -7,17 +7,14 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { Minimap } from "@/components/Minimap";
-import { HandleError } from "@/components/HandleError";
-import { HandleLoading } from "@/components/HandleLoading";
-import { useFilters } from "@/hooks/useFilters";
+import mockInstituciones from "@/mocks/intituciones.json";
 import Link from "next/link";
-import { redirect } from "next/navigation";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const { idInstitucion } = params;
-  const { instituciones, instError, instLoading } = useFilters();
-  if (!instituciones) redirect("/");
-  const [filterIntitucion] = instituciones.filter((i) => i.id == idInstitucion);
+  const [filterIntitucion] = mockInstituciones?.filter(
+    (i) => i.id == idInstitucion
+  );
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
 
   return (
@@ -35,18 +32,14 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
             {filterIntitucion && filterIntitucion.nombre}
           </h1>
           <div className="w-60 h-60">
-            <HandleError hasError={instError}>
-              <HandleLoading isLoading={instLoading}>
-                {filterIntitucion && filterIntitucion.lat ? (
-                  <Minimap
-                    lat={parseInt(filterIntitucion.lat)}
-                    lon={parseInt(filterIntitucion.lon)}
-                  />
-                ) : (
-                  <h1>Coordenadas no encontradas</h1>
-                )}
-              </HandleLoading>
-            </HandleError>
+            {filterIntitucion && filterIntitucion.lat ? (
+              <Minimap
+                lat={parseInt(filterIntitucion.lat)}
+                lon={parseInt(filterIntitucion.lon)}
+              />
+            ) : (
+              <h1>Coordenadas no encontradas</h1>
+            )}
           </div>
         </div>
         <h2 className="mt-2 text-xl text-[var(--color-blue)]">
@@ -55,12 +48,9 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
         <Accordion type="single" collapsible className="w-full">
           <AccordionItem value="item-1">
             <AccordionTrigger>Orientaciones</AccordionTrigger>
-            {instituciones &&
-              arrayOrientaciones.map((orientacion: string, i: number) => {
-                return (
-                  <AccordionContent key={i}>{orientacion}</AccordionContent>
-                );
-              })}
+            {arrayOrientaciones.map((orientacion: string, i: number) => {
+              return <AccordionContent key={i}>{orientacion}</AccordionContent>;
+            })}
           </AccordionItem>
         </Accordion>
         <p>escucela@gmail.com</p>

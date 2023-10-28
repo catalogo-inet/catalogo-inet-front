@@ -1,3 +1,5 @@
+"use client";
+
 import { AttributionControl, ZoomControl, ScaleControl } from "react-leaflet";
 
 export function Controladores() {

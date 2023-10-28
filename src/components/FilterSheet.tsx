@@ -30,10 +30,6 @@ const tiposInstitucion = [
 ];
 
 export const FilterSheet = () => {
-  // const { data, isLoading, hasError } = useFetch(
-  //   `http://localhost:7000/api/jurisdicciones`,
-  //   tiposInstitucion
-  // );
   const { filters, setFilterProvince, setFilterTipoInstitucion } = useFilters();
   const [provincia, setProvincia] = useState(filters.provincia);
   const [tipo, setTipo] = useState(filters.tipoInstitucion);

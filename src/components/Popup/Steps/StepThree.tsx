@@ -7,15 +7,15 @@ import {
   SelectLabel,
   SelectTrigger,
   SelectValue,
-  ScrollArea,
 } from "@/components/ui";
-
 import mockJurisdicciones from "@/mocks/jurisdicciones.json";
-
 import React, { useState } from "react";
 import { useFilters } from "@/hooks/useFilters";
+import { useGlobalContext } from "@/hooks/useGlobalContext";
+
 export const StepThree = () => {
-  const { popup, setPopup, setFilterProvince } = useFilters();
+  const { setFilterProvince } = useFilters();
+  const { setPopup } = useGlobalContext();
   const [provincia, setProvincia] = useState("Buenos Aires");
 
   const handleSelectChange = (provincia: string) => {
@@ -25,7 +25,6 @@ export const StepThree = () => {
   const handleClick = () => {
     setPopup(true);
     setFilterProvince(provincia);
-    console.log(provincia);
   };
 
   return (
