@@ -18,7 +18,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-screen">
       <div className="pl-2">
         <div className="w-10 h-10 flex justify-center items-center rounded-full shadow-md hover:scale-105">
           <Link href="/" className="text-lg font-bold">
@@ -28,9 +28,24 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
       </div>
       <div className="flex flex-col">
         <div className="flex justify-between items-start mt-5">
-          <h1 className="text-black text-4xl mt-10 font-bold">
-            {filterIntitucion && filterIntitucion.nombre}
-          </h1>
+          <div className="flex flex-col">
+            <h1 className="text-black text-4xl font-bold">
+              {filterIntitucion && filterIntitucion.nombre}
+            </h1>
+            <h2 className="mt-2 text-xl text-[var(--color-blue)]">
+              Carreras disponibles
+            </h2>
+            <Accordion type="single" collapsible className="w-full">
+              <AccordionItem value="item-1">
+                <AccordionTrigger>Orientaciones</AccordionTrigger>
+                {arrayOrientaciones.map((orientacion: string, i: number) => {
+                  return (
+                    <AccordionContent key={i}>{orientacion}</AccordionContent>
+                  );
+                })}
+              </AccordionItem>
+            </Accordion>
+          </div>
           <div className="w-60 h-60">
             {filterIntitucion && filterIntitucion.lat ? (
               <Minimap
@@ -42,19 +57,6 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
             )}
           </div>
         </div>
-        <h2 className="mt-2 text-xl text-[var(--color-blue)]">
-          Carreras disponibles
-        </h2>
-        <Accordion type="single" collapsible className="w-full">
-          <AccordionItem value="item-1">
-            <AccordionTrigger>Orientaciones</AccordionTrigger>
-            {arrayOrientaciones.map((orientacion: string, i: number) => {
-              return <AccordionContent key={i}>{orientacion}</AccordionContent>;
-            })}
-          </AccordionItem>
-        </Accordion>
-        <p>escucela@gmail.com</p>
-        <p>+54 249438742</p>
       </div>
     </div>
   );
