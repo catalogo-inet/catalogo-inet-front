@@ -32,11 +32,11 @@ export const StepTwo = ({ setSteps }) => {
       <div className="mt-5 flex flex-col space-y-4 max-w-xs">
         <Select>
           <SelectTrigger className=" rounded-[5px]">
-            <SelectValue placeholder="Orientacion" />
+            <SelectValue placeholder="Todavía no lo decidí" />
           </SelectTrigger>
           <SelectContent className="bg-white overflow-y-auto max-h-[15rem]">
             <SelectGroup>
-              <SelectLabel>Todavía no lo decidí.</SelectLabel>
+              <SelectLabel>Selecciona una orientación</SelectLabel>
               {orientaciones.map((item, i: number) => {
                 return (
                   <SelectItem key={i} value={item}>
