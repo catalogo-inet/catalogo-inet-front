@@ -7,7 +7,8 @@ import { useFilters } from "./useFilters";
 export function useInstituciones() {
   const { filters } = useFilters();
   const [instituciones, setInstituciones] = useState<Institucion[]>();
-  console.log({ filters, instituciones });
+  console.log(filters);
+
   useEffect(() => {
     const sortedInstituciones = mockInstituciones.slice();
 

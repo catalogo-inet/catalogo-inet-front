@@ -33,6 +33,7 @@ export const FiltersProvider = ({ children }: Props) => {
       return { ...currentFilters, tipoInstitucion: tipoInstitucion };
     });
   };
+
   return (
     <FiltersContext.Provider
       value={{

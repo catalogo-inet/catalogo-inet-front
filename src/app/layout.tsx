@@ -20,13 +20,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <GlobalProvider>
-        <FiltersProvider>
+      <FiltersProvider>
+        <GlobalProvider>
           <body className={inter.className}>
             <Layout>{children}</Layout>
           </body>
-        </FiltersProvider>
-      </GlobalProvider>
+        </GlobalProvider>
+      </FiltersProvider>
     </html>
   );
 }
