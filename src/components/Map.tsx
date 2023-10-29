@@ -13,8 +13,9 @@ import { Controladores } from "@/components/mapComponents/Controladores";
 import { useFilters } from "@/hooks/useFilters";
 import mockJurisdicciones from "@/mocks/jurisdicciones.json";
 
-function Eventos() {
   const [position, setPosition] = useState(null);
+  
+  function Eventos() {
   const map = useMap();
   const mapEvts = useMapEvents({
     locationfound(e) {
@@ -29,9 +30,10 @@ export default function Map() {
   const extremo_noroeste: [number, number] = [-20, -80];
   const extremo_sureste: [number, number] = [-90, -20];
   const limites_externos = L.latLngBounds(extremo_noroeste, extremo_sureste);
-  const [center, setCenter] = useState<LatLngExpression>([
+  const [center, setCenter] = useState<L.LatLngTuple>([
     -37.32167, -59.13316,
   ]);
+  
   const [provinciaActual, setProvincia] = useState<
     { nombre: string; coords: number[] }[]
   >([]);
@@ -39,11 +41,22 @@ export default function Map() {
   let centerKey = `${center[0]},${center[1]}`;
 
   useEffect(() => {
-    const filterProvincia = mockJurisdicciones.filter(
+    const coordenates = mockJurisdicciones.filter(
       (i: CordenateProvince) => i.nombre == filters.provincia
     );
-    setProvincia(filterProvincia);
-  }, [filters]);
+    console.log(coordenates.coords);
+    setProvincia(coordenates.coords)
+  }, [filters]
+
+  );
+
+  function CenterProvince() {
+    useEffect(() => {
+      const map = useMap();
+      map.flyTo(provinciaActual, 8);
+    }, [provinciaActual]);
+  }
+
 
   return (
     <div className="w-full h-[85vh]">
@@ -63,6 +76,7 @@ export default function Map() {
         <Controladores />
         <Capas />
         <Eventos />
+        <CenterProvince />
       </MapContainer>
     </div>
   );
