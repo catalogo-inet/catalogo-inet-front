@@ -9,14 +9,20 @@ import {
 import { Minimap } from "@/components/Minimap";
 import mockInstituciones from "@/mocks/intituciones.json";
 import Link from "next/link";
+import { useGlobalContext } from "@/hooks/useGlobalContext";
+import { useEffect } from "react";
 
 const Detail = ({ params }: { params: { idInstitucion: number } }) => {
+  const { setShowMap } = useGlobalContext();
   const { idInstitucion } = params;
   const [filterIntitucion] = mockInstituciones?.filter(
     (i) => i.id == idInstitucion
   );
   const arrayOrientaciones = filterIntitucion!.orientaciones.split(",");
 
+  useEffect(() => {
+    setShowMap(false);
+  }, [setShowMap]);
   return (
     <div className="flex flex-col min-h-screen">
       <div className="pl-2">
@@ -27,7 +33,7 @@ const Detail = ({ params }: { params: { idInstitucion: number } }) => {
         </div>
       </div>
       <div className="flex flex-col">
-        <div className="flex justify-between items-start mt-5">
+        <div className="flex flex-col sm:flex-row justify-between items-start mt-5">
           <div className="flex flex-col">
             <h1 className="text-black text-4xl font-bold">
               {filterIntitucion && filterIntitucion.nombre}
