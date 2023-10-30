@@ -21,7 +21,8 @@ export const customIcon = L.icon({
 });
 
 export function Capas() {
-  const { instituciones, instError, instLoading } = useGlobalContext();
+  const { instituciones, instError, instLoading, setShowMap } =
+    useGlobalContext();
 
   return (
     <>
